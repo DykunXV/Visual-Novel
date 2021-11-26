@@ -44,6 +44,24 @@ namespace Template {
         happy: "",
         upset: ""
       }
+    },
+    mario: {
+      name: "Mario",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        angry: "",
+        happy: "",
+        upset: ""
+      }
+    },
+    chris: {
+      name: "Chris",
+      origin: ƒS.ORIGIN.BOTTOMCENTER,
+      pose: {
+        angry: "",
+        happy: "",
+        upset: ""
+      }
     }
   };
 
@@ -54,7 +72,7 @@ namespace Template {
   window.addEventListener("load", start);
   function start(_event: Event): void {
     let scenes: ƒS.Scenes = [
-      { scene: Scene, name: "Scene" },
+
       { scene: Introduction, name: "Introduction" }
     ];
 
