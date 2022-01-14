@@ -1,7 +1,4 @@
 declare namespace Template {
-    function Introduction(): ƒS.SceneReturn;
-}
-declare namespace Template {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
@@ -18,6 +15,13 @@ declare namespace Template {
     };
     let audio: {
         backgroundTheme: string;
+    };
+    let items: {
+        crowbar: {
+            name: string;
+            description: string;
+            image: string;
+        };
     };
     let locations: {
         bedroom: {
@@ -61,7 +65,14 @@ declare namespace Template {
     function fromRightToLeft(): ƒS.AnimationDefinition;
     let dataForSave: {
         nameProtagonist: string;
+        points: number;
     };
+}
+declare namespace Template {
+    function Introduction(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Test(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Scene(): ƒS.SceneReturn;

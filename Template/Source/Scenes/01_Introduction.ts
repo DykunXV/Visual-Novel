@@ -2,13 +2,15 @@ namespace Template {
   export async function Introduction(): ƒS.SceneReturn {
     console.log('FudgeStory Introduction Scene starting');
 
+    let testVar = 'HAAY'
+
     let text = {
       narrator: {
         T0000: '',
         T0001: '',
       },
       john: {
-        T0000: 'Hi ' + dataForSave.nameProtagonist,
+        T0000: `Hi ${testVar} bra`,
         T0001: 'Bye John',
       },
       mario: {
@@ -38,13 +40,16 @@ namespace Template {
       ƒS.positionPercent(30, 100)
     );
     await ƒS.update(1);
-    await ƒS.Speech.tell(characters.narrator, 'Name eingeben ');
+    await ƒS.Speech.tell(characters.narrator, 'Namen eingeben ');
     dataForSave.nameProtagonist = await ƒS.Speech.getInput();
     await ƒS.Speech.tell(characters.john, text.john.T0000);
     await ƒS.Character.animate(characters.john, characters.john.pose.happy, fromRightToLeft());
     await signalDelay();
-    await ƒS.Speech.tell(characters.john, 'hey, manueller text');
+    await ƒS.Speech.tell(characters.john, 'hey, manuellerr text');
     await ƒS.Character.hide(characters.john);
+
+    await ƒS.Inventory.add(items.crowbar);
+    await ƒS.Inventory.open();
 
 
     console.log(dataForSave.nameProtagonist);

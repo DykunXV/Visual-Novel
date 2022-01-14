@@ -23,6 +23,14 @@ namespace Template {
     backgroundTheme: "./Audio/BGM/TEST.mp3",
   };
 
+  export let items = {
+    crowbar: {
+      name: "Crowbar",
+      description: "Krasses Teil",
+      image: "./Images/Items/crowbar.png",
+    }
+  };
+
   //define backgrounds
   export let locations = {
     bedroom: {
@@ -84,15 +92,75 @@ namespace Template {
     };
   }
 
+  //define data that will be saved
   export let dataForSave = {
-    nameProtagonist: ""
+    nameProtagonist: "",
+    points: 0,
   };
+
+  //define in game Menu
+  let inGameMenu = {
+    save: "Save",
+    load: "Load",
+    close: "Close",
+  }
+
+  let gameMenu: ƒS.Menu;
+
+  async function buttonFunctionalities(_option: string): Promise<void> {
+    console.log(_option);
+    switch (_option) {
+      case inGameMenu.save:
+        await ƒS.Progress.save();
+        break;
+      case inGameMenu.load:
+        await ƒS.Progress.load();
+        break;
+      case inGameMenu.close:
+        gameMenu.close();
+        menu = false;
+        break;
+      
+    }
+
+  }
+
+  let menu: boolean = true;
+
+  //Shortcuts für's Menü
+  document.addEventListener("keydown", hndKeyPress);
+  async function hndKeyPress(_event: KeyboardEvent): Promise<void> {
+    switch (_event.code) {
+      case ƒ.KEYBOARD_CODE.F8:
+        console.log("Saved");
+        await ƒS.Progress.save();
+        break;
+      case ƒ.KEYBOARD_CODE.F9:
+        console.log("Loaded");
+        await ƒS.Progress.load();
+        break;
+      case ƒ.KEYBOARD_CODE.M:
+        if (menu) {
+          console.log("Closing Menu");
+          gameMenu.close();
+          menu = false;
+        } else {
+          console.log("Opening Menu");
+          gameMenu.open();
+          menu = true;
+        }
+    }
+  }
+
+
 
   window.addEventListener("load", start);
   function start(_event: Event): void {
+    gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
     let scenes: ƒS.Scenes = [
 
-      { scene: Introduction, name: "Introduction" }
+      { id: "Einführung", scene: Introduction, name: "Introduction" },
+      { id: "Test", scene: Test, name: "Test", next: "Einführung" }
     ];
 
     let uiElement: HTMLElement = document.querySelector("[type=interface]");
