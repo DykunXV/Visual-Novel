@@ -3,70 +3,72 @@ var Template;
 (function (Template) {
     Template.ƒ = FudgeCore;
     Template.ƒS = FudgeStory;
-    console.log("FudgeStory template starting");
+    console.log('FudgeStory template starting');
     //define transitions
     Template.transition = {
         clock: {
             duration: 1,
-            alpha: "./Images/Transitions/puzzle.png",
+            alpha: './Images/Transitions/puzzle.png',
             edge: 1,
         },
         longerClock: {
             duration: 2,
-            alpha: "./Images/Transitions/puzzle.png",
+            alpha: './Images/Transitions/puzzle.png',
             edge: 1,
-        }
+        },
     };
     //define audio
     Template.audio = {
-        backgroundTheme: "./Audio/BGM/TEST.mp3",
+        backgroundTheme: './Audio/BGM/TEST.mp3',
     };
+    //define items
     Template.items = {
         crowbar: {
-            name: "Crowbar",
-            description: "Krasses Teil",
-            image: "./Images/Items/crowbar.png",
-        }
+            name: 'Crowbar',
+            description: 'Krasses Teil',
+            image: './Images/Items/crowbar.png',
+        },
     };
     //define backgrounds
     Template.locations = {
         bedroom: {
-            name: "Bedroom",
-            background: "./Images/Backgrounds/test.jpg"
-        }
+            name: 'Bedroom',
+            background: './Images/Backgrounds/test.jpg',
+        },
     };
     //define characters
     Template.characters = {
         narrator: {
-            name: "",
+            name: '',
         },
         john: {
-            name: "John",
+            name: 'John',
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "./Images/Characters/test/1.jpg",
-                happy: "./Images/Characters/test/1.jpg",
-                upset: "./Images/Characters/test/1.jpg",
-            }
+                angry: './Images/Characters/test/1.jpg',
+                happy: './Images/Characters/test/1.jpg',
+                upset: './Images/Characters/test/1.jpg',
+            },
+            smol: './Images/Characters/test/1.jpg',
         },
         mario: {
-            name: "Mario",
+            name: 'Mario',
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "",
-                happy: "",
-                upset: ""
-            }
+                angry: '',
+                happy: '',
+                upset: '',
+            },
         },
         chris: {
-            name: "Chris",
+            name: 'Chris',
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                angry: "",
-                happy: "",
-                upset: ""
-            }
-        }
+                angry: '',
+                happy: '',
+                upset: '',
+            },
+        },
     };
     //define animations
     function fromRightToOutOfCanvas() {
@@ -74,7 +76,7 @@ var Template;
             start: { translation: Template.ƒS.positionPercent(30, 100) },
             end: { translation: Template.ƒS.positionPercent(120, 100) },
             duration: 1,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
     Template.fromRightToOutOfCanvas = fromRightToOutOfCanvas;
@@ -83,20 +85,20 @@ var Template;
             start: { translation: Template.ƒS.positions.bottomright },
             end: { translation: Template.ƒS.positions.bottomleft },
             duration: 1,
-            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
         };
     }
     Template.fromRightToLeft = fromRightToLeft;
     //define data that will be saved
     Template.dataForSave = {
-        nameProtagonist: "",
+        nameProtagonist: '',
         points: 0,
     };
     //define in game Menu
     let inGameMenu = {
-        save: "Save",
-        load: "Load",
-        close: "Close",
+        save: 'Save',
+        load: 'Load',
+        close: 'Close',
     };
     let gameMenu;
     async function buttonFunctionalities(_option) {
@@ -116,38 +118,39 @@ var Template;
     }
     let menu = true;
     //Shortcuts für's Menü
-    document.addEventListener("keydown", hndKeyPress);
+    document.addEventListener('keydown', hndKeyPress);
     async function hndKeyPress(_event) {
         switch (_event.code) {
             case Template.ƒ.KEYBOARD_CODE.F8:
-                console.log("Saved");
+                console.log('Saved');
                 await Template.ƒS.Progress.save();
                 break;
             case Template.ƒ.KEYBOARD_CODE.F9:
-                console.log("Loaded");
+                console.log('Loaded');
                 await Template.ƒS.Progress.load();
                 break;
             case Template.ƒ.KEYBOARD_CODE.M:
                 if (menu) {
-                    console.log("Closing Menu");
+                    console.log('Closing Menu');
                     gameMenu.close();
                     menu = false;
                 }
                 else {
-                    console.log("Opening Menu");
+                    console.log('Opening Menu');
                     gameMenu.open();
                     menu = true;
                 }
         }
     }
-    window.addEventListener("load", start);
+    window.addEventListener('load', start);
     function start(_event) {
-        gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, "gameMenu");
+        gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
+        buttonFunctionalities("Close");
         let scenes = [
-            { id: "Einführung", scene: Template.Introduction, name: "Introduction" },
-            { id: "Test", scene: Template.Test, name: "Test", next: "Einführung" }
+            { id: 'Einführung', scene: Template.Introduction, name: 'Introduction' },
+            { id: 'Test', scene: Template.Test, name: 'Test', next: 'Einführung' },
         ];
-        let uiElement = document.querySelector("[type=interface]");
+        let uiElement = document.querySelector('[type=interface]');
         Template.dataForSave = Template.ƒS.Progress.setData(Template.dataForSave, uiElement);
         // start the sequence
         Template.ƒS.Progress.go(scenes);
@@ -157,14 +160,13 @@ var Template;
 (function (Template) {
     async function Introduction() {
         console.log('FudgeStory Introduction Scene starting');
-        let testVar = 'HAAY';
         let text = {
             narrator: {
                 T0000: '',
                 T0001: '',
             },
             john: {
-                T0000: `Hi ${testVar} bra`,
+                T0000: `Hi ${Template.dataForSave.nameProtagonist} bra`,
                 T0001: 'Bye John',
             },
             mario: {
@@ -177,27 +179,26 @@ var Template;
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         //Delay
-        let signalDelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(5)]);
+        let signalDelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(2)]);
         await Template.ƒS.Location.show(Template.locations.bedroom);
         await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge);
         await Template.ƒS.Character.show(Template.characters.john, Template.characters.john.pose.happy, Template.ƒS.positionPercent(30, 100));
         await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.narrator, 'Namen eingeben ');
         Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
-        await Template.ƒS.Speech.tell(Template.characters.john, text.john.T0000);
+        await Template.ƒS.Speech.tell(Template.characters.john, `Hi ${Template.dataForSave.nameProtagonist} bra`);
         await Template.ƒS.Character.animate(Template.characters.john, Template.characters.john.pose.happy, Template.fromRightToLeft());
         await signalDelay();
         await Template.ƒS.Speech.tell(Template.characters.john, 'hey, manueller text');
         await Template.ƒS.Character.hide(Template.characters.john);
-        await Template.ƒS.Inventory.add(Template.items.crowbar);
-        await Template.ƒS.Inventory.open();
-        console.log(Template.dataForSave.nameProtagonist);
+        //await ƒS.Inventory.add(items.crowbar);
+        //await ƒS.Inventory.open();
         let firstDialogueElementOptions = {
             iSayOk: 'Okay.',
             iSayYes: 'Ja.',
             iSayNo: 'Nein.',
         };
-        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'individualCSSClass');
+        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
         switch (firstDialogueElement) {
             case firstDialogueElementOptions.iSayOk:
                 await Template.ƒS.Speech.tell(Template.characters.john, 'hey, manueller text');

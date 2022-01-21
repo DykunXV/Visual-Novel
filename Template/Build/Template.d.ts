@@ -41,6 +41,7 @@ declare namespace Template {
                 happy: string;
                 upset: string;
             };
+            smol: string;
         };
         mario: {
             name: string;

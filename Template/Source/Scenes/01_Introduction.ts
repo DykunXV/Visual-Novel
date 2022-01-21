@@ -2,15 +2,13 @@ namespace Template {
   export async function Introduction(): ƒS.SceneReturn {
     console.log('FudgeStory Introduction Scene starting');
 
-    let testVar = 'HAAY'
-
     let text = {
       narrator: {
         T0000: '',
         T0001: '',
       },
       john: {
-        T0000: `Hi ${testVar} bra`,
+        T0000: `Hi ${dataForSave.nameProtagonist} bra`,
         T0001: 'Bye John',
       },
       mario: {
@@ -26,7 +24,7 @@ namespace Template {
     ƒS.Speech.setTickerDelays(20, 2); 
 
     //Delay
-    let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(5)])
+    let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)])
 
     await ƒS.Location.show(locations.bedroom);
     await ƒS.update(
@@ -35,24 +33,22 @@ namespace Template {
       transition.clock.edge
     );
     await ƒS.Character.show(
-      characters.john,
+      characters.john,  
       characters.john.pose.happy,
       ƒS.positionPercent(30, 100)
     );
+
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.narrator, 'Namen eingeben ');
     dataForSave.nameProtagonist = await ƒS.Speech.getInput();
-    await ƒS.Speech.tell(characters.john, text.john.T0000);
+    await ƒS.Speech.tell(characters.john, `Hi ${dataForSave.nameProtagonist} bra`);
     await ƒS.Character.animate(characters.john, characters.john.pose.happy, fromRightToLeft());
     await signalDelay();
-    await ƒS.Speech.tell(characters.john, 'hey, manuellerr text');
+    await ƒS.Speech.tell(characters.john, 'hey, manueller text');
     await ƒS.Character.hide(characters.john);
 
-    await ƒS.Inventory.add(items.crowbar);
-    await ƒS.Inventory.open();
-
-
-    console.log(dataForSave.nameProtagonist);
+    //await ƒS.Inventory.add(items.crowbar);
+    //await ƒS.Inventory.open();
 
     let firstDialogueElementOptions = {
       iSayOk: 'Okay.',
@@ -62,7 +58,7 @@ namespace Template {
 
     let firstDialogueElement = await ƒS.Menu.getInput(
       firstDialogueElementOptions,
-      'individualCSSClass'
+      'player-choice'
     );
 
     switch (firstDialogueElement) {
