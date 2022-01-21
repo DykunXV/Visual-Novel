@@ -139,7 +139,7 @@ namespace Template {
         console.log('Loaded');
         await ƒS.Progress.load();
         break;
-      case ƒ.KEYBOARD_CODE.M:
+      case ƒ.KEYBOARD_CODE.F10:
         if (menu) {
           console.log('Closing Menu');
           gameMenu.close();

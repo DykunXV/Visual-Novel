@@ -129,7 +129,7 @@ var Template;
                 console.log('Loaded');
                 await Template.ƒS.Progress.load();
                 break;
-            case Template.ƒ.KEYBOARD_CODE.M:
+            case Template.ƒ.KEYBOARD_CODE.F10:
                 if (menu) {
                     console.log('Closing Menu');
                     gameMenu.close();
