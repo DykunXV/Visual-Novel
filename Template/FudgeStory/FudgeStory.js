@@ -439,7 +439,7 @@ var FudgeStory;
          * Adds an item to the inventory
          */
         static add(_item) {
-            let item = Inventory.getItemElement(_item);
+            let item = _item
             if (item) {
                 let amount = item.querySelector("amount");
                 amount.innerText = (parseInt(amount.innerText) + 1).toString();

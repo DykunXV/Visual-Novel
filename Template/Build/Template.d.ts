@@ -2,12 +2,22 @@ declare namespace Template {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transition: {
-        clock: {
+        puzzle: {
             duration: number;
             alpha: string;
             edge: number;
         };
-        longerClock: {
+        waves: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        circlewipeClockwise: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        circlewipeTop: {
             duration: number;
             alpha: string;
             edge: number;
@@ -17,13 +27,22 @@ declare namespace Template {
         backgroundTheme: string;
     };
     let items: {
-        crowbar: {
+        Crowbar: {
+            name: string;
+            description: string;
+            image: string;
+        };
+        Blowbar: {
             name: string;
             description: string;
             image: string;
         };
     };
     let locations: {
+        dream: {
+            name: string;
+            background: string;
+        };
         bedroom: {
             name: string;
             background: string;
@@ -33,32 +52,41 @@ declare namespace Template {
         narrator: {
             name: string;
         };
-        john: {
+        jason: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
-            };
-            smol: string;
-        };
-        mario: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
+                neutral: string;
                 angry: string;
                 happy: string;
                 upset: string;
             };
         };
-        chris: {
+        alice: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
+                neutral: string;
                 angry: string;
                 happy: string;
                 upset: string;
+            };
+        };
+        thomas: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
+                angry: string;
+                happy: string;
+                upset: string;
+            };
+        };
+        jasonsThoughts: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                neutral: string;
             };
         };
     };
@@ -68,6 +96,16 @@ declare namespace Template {
         nameProtagonist: string;
         points: number;
     };
+    function showCredits(): void;
+}
+declare namespace Template {
+    function ADream(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function MyIntroduction(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function MeetingYourFriends(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Introduction(): ƒS.SceneReturn;

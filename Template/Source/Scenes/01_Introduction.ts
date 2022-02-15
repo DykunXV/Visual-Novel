@@ -7,13 +7,13 @@ namespace Template {
         T0000: '',
         T0001: '',
       },
-      john: {
+      jason: {
         T0000: `Hi ${dataForSave.nameProtagonist} bra`,
-        T0001: 'Bye John',
+        T0001: 'Bye jason',
       },
-      mario: {
-        T0000: 'Hi Mario',
-        T0001: 'Bye Mario',
+      alice: {
+        T0000: 'Hi Alice',
+        T0001: 'Bye Alice',
       },
     };
 
@@ -33,22 +33,25 @@ namespace Template {
       transition.clock.edge
     );
     await ƒS.Character.show(
-      characters.john,  
-      characters.john.pose.happy,
+      characters.jason,  
+      characters.jason.pose.happy,
       ƒS.positionPercent(30, 100)
     );
+
+    //console.log(items);
+    //ƒS.Inventory.add(items.Blowbar);
+    //ƒS.Inventory.open();
 
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.narrator, 'Namen eingeben ');
     dataForSave.nameProtagonist = await ƒS.Speech.getInput();
-    await ƒS.Speech.tell(characters.john, `Hi ${dataForSave.nameProtagonist} bra`);
-    await ƒS.Character.animate(characters.john, characters.john.pose.happy, fromRightToLeft());
+    await ƒS.Speech.tell(characters.jason, `Hi ${dataForSave.nameProtagonist} bra`);
+    await ƒS.Character.animate(characters.jason, characters.jason.pose.happy, fromRightToLeft());
     await signalDelay();
-    await ƒS.Speech.tell(characters.john, 'hey, manueller text');
-    await ƒS.Character.hide(characters.john);
+    await ƒS.Speech.tell(characters.jason, 'hey, manueller text');
+    await ƒS.Character.hide(characters.jason);
 
-    //await ƒS.Inventory.add(items.crowbar);
-    //await ƒS.Inventory.open();
+    
 
     let firstDialogueElementOptions = {
       iSayOk: 'Okay.',
@@ -63,19 +66,19 @@ namespace Template {
 
     switch (firstDialogueElement) {
       case firstDialogueElementOptions.iSayOk:
-        await ƒS.Speech.tell(characters.john, 'hey, manueller text');
+        await ƒS.Speech.tell(characters.jason, 'hey, manueller text');
         break;
       case firstDialogueElementOptions.iSayYes:
         await ƒS.Character.show(
-          characters.mario,
-          characters.mario.pose.angry,
+          characters.alice,
+          characters.alice.pose.angry,
           ƒS.positionPercent(30, 100)
         );
         break;
       case firstDialogueElementOptions.iSayNo:
-        await ƒS.Speech.tell(characters.mario, text.mario.T0000);
+        await ƒS.Speech.tell(characters.alice, text.alice.T0000);
     }
 
-    await ƒS.Speech.tell(characters.john, text.john.T0000);
+    await ƒS.Speech.tell(characters.jason, text.jason.T0001);
   }
 }
