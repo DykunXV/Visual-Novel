@@ -29,7 +29,12 @@ var Template;
     };
     //define audio
     Template.audio = {
-        backgroundTheme: './Audio/BGM/TEST.mp3',
+        dreamTheme: './Audio/BGM/incompetech/Impact Prelude.mp3',
+        bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+        busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
+        skateparkTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+        schoolTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+        bowlingTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
     };
     //define items
     Template.items = {
@@ -54,6 +59,14 @@ var Template;
             name: 'Bedroom',
             background: './Images/Backgrounds/bedroom.jpg',
         },
+        bedroomNight: {
+            name: 'Bedroom Night',
+            background: './Images/Backgrounds/bedroomNight.jpg',
+        },
+        busStop: {
+            name: 'Bus stop',
+            background: './Images/Backgrounds/busStop.jpg',
+        },
     };
     //define characters
     Template.characters = {
@@ -65,9 +78,9 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: './Images/Characters/Jason/Jason_Neutral.png',
-                angry: './Images/Characters/test/1.jpg',
-                happy: './Images/Characters/test/1.jpg',
-                upset: './Images/Characters/test/1.jpg',
+                neutral2: './Images/Characters/Jason/Jason_Neutral2.png',
+                thinking: './Images/Characters/Jason/Jason_Thinking.png',
+                disappointed: './Images/Characters/Jason/Jason_Disappointed.png',
             },
         },
         alice: {
@@ -75,9 +88,9 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: './Images/Characters/Alice/Alice_Neutral.png',
-                angry: './Images/Characters/test/1.jpg',
-                happy: './Images/Characters/test/1.jpg',
-                upset: './Images/Characters/test/1.jpg',
+                neutral2: './Images/Characters/Alice/Alice_Neutral2.png',
+                happy: './Images/Characters/Alice/Alice_Happy.png',
+                sad: './Images/Characters/Alice/Alice_Sad.png',
             },
         },
         thomas: {
@@ -85,9 +98,9 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: './Images/Characters/Thomas/Thomas_Neutral.png',
-                angry: './Images/Characters/test/1.jpg',
-                happy: './Images/Characters/test/1.jpg',
-                upset: './Images/Characters/test/1.jpg',
+                neutral2: './Images/Characters/Thomas/Thomas_Neutral2.png',
+                thinking: './Images/Characters/Thomas/Thomas_Thinking.png',
+                questioning: './Images/Characters/Thomas/Thomas_Questioning.png',
             },
         },
         jasonsThoughts: {
@@ -95,6 +108,9 @@ var Template;
             origin: Template.ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 neutral: './Images/Characters/JasonsThoughts/JasonsThoughts_Neutral.png',
+                neutral2: './Images/Characters/JasonsThoughts/JasonsThoughts_Neutral2.png',
+                thinking: './Images/Characters/JasonsThoughts/JasonsThoughts_Thinking.png',
+                disappointed: './Images/Characters/JasonsThoughts/JasonsThoughts_Disappointed.png',
             }
         }
     };
@@ -117,9 +133,27 @@ var Template;
         };
     }
     Template.fromRightToLeft = fromRightToLeft;
+    function fromMidToRight() {
+        return {
+            start: { translation: Template.ƒS.positionPercent(50, 100) },
+            end: { translation: Template.ƒS.positionPercent(75, 100) },
+            duration: 1,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+    Template.fromMidToRight = fromMidToRight;
+    function fromMidToLeft() {
+        return {
+            start: { translation: Template.ƒS.positionPercent(50, 100) },
+            end: { translation: Template.ƒS.positionPercent(25, 100) },
+            duration: 1,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+    Template.fromMidToLeft = fromMidToLeft;
     //define data that will be saved
     Template.dataForSave = {
-        nameProtagonist: '',
+        nameProtagonist: 'TEST123',
         reprehensibility: 0,
         firstSpellSpoken: false,
         secondSpellSpoken: false,
@@ -194,8 +228,8 @@ var Template;
         gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
         buttonFunctionalities("Close");
         let scenes = [
-            { id: '000', scene: Template.ADream, name: 'Ein Traum', next: '001' },
-            { id: '001', scene: Template.MyIntroduction, name: 'Einführung', next: '002' },
+            //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+            //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
             { id: '002', scene: Template.MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
             { id: '003', scene: Template.AWish, name: 'Ein Wunsch', next: '004' },
             { id: '004', scene: Template.ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
@@ -211,49 +245,8 @@ var Template;
 var Template;
 (function (Template) {
     async function ADream() {
-        console.log('Scene 001_Introduction starting');
+        console.log('Scene 000_ADream starting');
         let text = {
-            placeholder: {
-                T0000: '',
-                T0001: '',
-                T0002: '',
-                T0003: '',
-                T0004: '',
-                T0005: '',
-                T0006: '',
-                T0007: '',
-                T0008: '',
-                T0009: '',
-                T0010: '',
-                T0011: '',
-                T0012: '',
-                T0013: '',
-                T0014: '',
-                T0015: '',
-                T0016: '',
-                T0017: '',
-                T0018: '',
-                T0019: '',
-                T0020: '',
-                T0021: '',
-                T0022: '',
-                T0023: '',
-                T0024: '',
-                T0025: '',
-                T0026: '',
-                T0027: '',
-                T0028: '',
-                T0029: '',
-                T0030: '',
-                T0031: '',
-                T0032: '',
-                T0033: '',
-                T0034: '',
-                T0035: '',
-                T0036: '',
-                T0037: '',
-                T0038: '',
-            },
             jasonsThoughts: {
                 T0000: 'Die Welt, in der wir leben, ist ein schöner Ort.',
                 T0001: 'Man könnte fast schon behaupten, dass eine gewisse Magie hinter allem steckt.',
@@ -269,7 +262,7 @@ var Template;
             }
         };
         //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
+        Template.ƒS.Sound.play(Template.audio.dreamTheme, 1, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         //Delay
@@ -292,7 +285,8 @@ var Template;
         await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0009);
         await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0010);
         await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
-        await Template.ƒS.update(1);
+        await Template.ƒS.update();
+        Template.ƒS.Sound.fade(Template.audio.dreamTheme, 0, 1, true);
     }
     Template.ADream = ADream;
 })(Template || (Template = {}));
@@ -340,16 +334,12 @@ var Template;
                 T0002: `${Template.dataForSave.nameProtagonist} wacht wieder aus seinem Traum auf.`,
             },
         };
-        //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
-        //In welcher Zeit wie viele Buchstaben angezeigt werden
-        Template.ƒS.Speech.setTickerDelays(20, 2);
+        Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
         await Template.ƒS.Location.show(Template.locations.bedroom);
         await Template.ƒS.update(Template.transition.waves.duration, Template.transition.waves.alpha, Template.transition.waves.edge);
-        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.update(1);
-        await Template.ƒS.update(1);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0000);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0001);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0002);
@@ -361,12 +351,18 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0008);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0009);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0010);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0011);
         let firstDialogueElementOptions = {
             iChooseFriends: 'Mit Freunden treffen.',
             iChooseSleep: 'Weiter schlafen.',
         };
         let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         switch (firstDialogueElement) {
             case firstDialogueElementOptions.iChooseFriends:
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0012);
@@ -374,33 +370,51 @@ var Template;
             case firstDialogueElementOptions.iChooseSleep:
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0013);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0014);
+                Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0, 1, true);
+                Template.ƒS.Sound.play(Template.audio.dreamTheme, 1, true);
                 await Template.ƒS.Location.show(Template.locations.dream);
                 await Template.ƒS.Character.hide(Template.characters.jason);
                 await Template.ƒS.update(Template.transition.waves.duration, Template.transition.waves.alpha, Template.transition.waves.edge);
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0001);
-                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.neutral, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.disappointed, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update(1);
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0000);
+                await Template.ƒS.Character.animate(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.disappointed, Template.fromMidToRight());
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0015);
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0001);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0016);
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0002);
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0003);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0017);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0018);
                 await Template.ƒS.Speech.tell(Template.characters.jasonsThoughts, text.jasonsThoughts.T0004);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0019);
                 await Template.ƒS.Speech.tell(Template.characters.jasonsThoughts, text.jasonsThoughts.T0005);
+                Template.ƒS.Sound.fade(Template.audio.dreamTheme, 0, 1, true);
+                Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
                 await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+                await Template.ƒS.Character.hide(Template.characters.jason);
                 await Template.ƒS.Location.show(Template.locations.bedroom);
-                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update(Template.transition.waves.duration, Template.transition.waves.alpha, Template.transition.waves.edge);
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0002);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0020);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0021);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0022);
                 break;
         }
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.update();
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0, 1, true);
     }
     Template.MyIntroduction = MyIntroduction;
 })(Template || (Template = {}));
@@ -453,25 +467,47 @@ var Template;
                 T0011: 'Dann geh heute etwas früher schlafen. Und hör auf mit den ganzen Energy Drinks vorm Schlafen!',
             },
         };
-        //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
-        //In welcher Zeit wie viele Buchstaben angezeigt werden
-        Template.ƒS.Speech.setTickerDelays(20, 2);
+        Template.ƒS.Sound.play(Template.audio.busStopTheme, 1, true);
+        await Template.ƒS.Location.show(Template.locations.busStop);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update(Template.transition.circlewipeClockwise.duration, Template.transition.circlewipeClockwise.alpha, Template.transition.circlewipeClockwise.edge);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0000);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0001);
+        await Template.ƒS.Character.animate(Template.characters.jason, Template.characters.jason.pose.neutral, Template.fromMidToLeft());
+        await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral, Template.ƒS.positionPercent(75, 100));
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0001);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0002);
+        await Template.ƒS.Character.hide(Template.characters.alice);
+        await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral2, Template.ƒS.positionPercent(75, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0000);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0003);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0000);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0004);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0002);
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0001);
+        await Template.ƒS.Character.hide(Template.characters.alice);
+        await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.happy, Template.ƒS.positionPercent(75, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0001);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0002);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0005);
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0003);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0006);
         let firstDialogueElementOptions = {
             iChooseWaldmeister: 'Waldmeister Eis nehmen.',
@@ -482,19 +518,40 @@ var Template;
         switch (firstDialogueElement) {
             case firstDialogueElementOptions.iChooseWaldmeister:
                 Template.dataForSave.reprehensibility += 5;
+                await Template.ƒS.Character.hide(Template.characters.alice);
+                await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral2, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0002);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
                 break;
             case firstDialogueElementOptions.iChooseKirsche:
                 Template.dataForSave.reprehensibility += 5;
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0005);
                 break;
             case firstDialogueElementOptions.iChooseNussNougat:
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0007);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0006);
-                await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0007);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0008);
-                await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0007);
+                await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0008);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.hide(Template.characters.alice);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Location.show(Template.locations.bedroomNight);
+                await Template.ƒS.update(Template.transition.circlewipeClockwise.duration, Template.transition.circlewipeClockwise.alpha, Template.transition.circlewipeClockwise.edge);
+                Template.ƒS.Sound.fade(Template.audio.busStopTheme, 0, 1, true);
+                Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0003);
                 return '003';
         }
@@ -505,23 +562,55 @@ var Template;
         let secondDialogueElement = await Template.ƒS.Menu.getInput(secondDialogueElementOptions, 'player-choice');
         switch (secondDialogueElement) {
             case secondDialogueElementOptions.iChooseSorry:
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0009);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0009);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0010);
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0007);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0011);
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0008);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.hide(Template.characters.alice);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Location.show(Template.locations.bedroomNight);
+                await Template.ƒS.update(Template.transition.circlewipeClockwise.duration, Template.transition.circlewipeClockwise.alpha, Template.transition.circlewipeClockwise.edge);
+                Template.ƒS.Sound.fade(Template.audio.busStopTheme, 0, 1, true);
+                Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0003);
                 break;
             case secondDialogueElementOptions.iChooseRude:
                 Template.dataForSave.reprehensibility += 5;
                 Template.dataForSave.firstSpellSpoken = true;
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0012);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0010);
+                await Template.ƒS.Character.hide(Template.characters.alice);
+                await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.sad, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0003);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0013);
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0011);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0014);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.hide(Template.characters.alice);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Location.show(Template.locations.bedroomNight);
+                await Template.ƒS.update(Template.transition.circlewipeClockwise.duration, Template.transition.circlewipeClockwise.alpha, Template.transition.circlewipeClockwise.edge);
+                Template.ƒS.Sound.fade(Template.audio.busStopTheme, 0, 1, true);
+                Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0003);
                 break;
         }
@@ -598,7 +687,7 @@ var Template;
             }
         };
         //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0.02, 2, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000);
@@ -769,7 +858,7 @@ var Template;
             }
         };
         //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0.02, 2, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         if (Template.dataForSave.firstSpellSpoken == false && Template.dataForSave.secondSpellSpoken == false) {
@@ -944,7 +1033,7 @@ var Template;
             }
         };
         //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0.02, 2, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000);
@@ -1049,7 +1138,7 @@ var Template;
             },
         };
         //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0.02, 2, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0000);

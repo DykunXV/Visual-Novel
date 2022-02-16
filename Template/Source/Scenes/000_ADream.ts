@@ -1,49 +1,8 @@
 namespace Template {
     export async function ADream(): ƒS.SceneReturn {
-      console.log('Scene 001_Introduction starting');
+      console.log('Scene 000_ADream starting');
   
       let text = {
-        placeholder: {
-          T0000: '',
-          T0001: '',
-          T0002: '',
-          T0003: '',
-          T0004: '',
-          T0005: '',
-          T0006: '',
-          T0007: '',
-          T0008: '',
-          T0009: '',
-          T0010: '',
-          T0011: '',
-          T0012: '',
-          T0013: '',
-          T0014: '',
-          T0015: '',
-          T0016: '',
-          T0017: '',
-          T0018: '',
-          T0019: '',
-          T0020: '',
-          T0021: '',
-          T0022: '',
-          T0023: '',
-          T0024: '',
-          T0025: '',
-          T0026: '',
-          T0027: '',
-          T0028: '',
-          T0029: '',
-          T0030: '',
-          T0031: '',
-          T0032: '',
-          T0033: '',
-          T0034: '',
-          T0035: '',
-          T0036: '',
-          T0037: '',
-          T0038: '',
-        },
         jasonsThoughts: {
           T0000: 'Die Welt, in der wir leben, ist ein schöner Ort.',
           T0001: 'Man könnte fast schon behaupten, dass eine gewisse Magie hinter allem steckt.',
@@ -60,13 +19,13 @@ namespace Template {
       };
   
       //Musik
-      ƒS.Sound.fade(audio.backgroundTheme, 0.02, 2, true)
+      ƒS.Sound.play(audio.dreamTheme, 1, true);
   
       //In welcher Zeit wie viele Buchstaben angezeigt werden
       ƒS.Speech.setTickerDelays(20, 2); 
 
       //Delay
-      let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)])
+      let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
 
   
       await ƒS.Location.show(locations.dream);
@@ -80,7 +39,7 @@ namespace Template {
         characters.jasonsThoughts.pose.neutral,
         ƒS.positionPercent(50, 100)
       );
-  
+
       await ƒS.update(1);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0000);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0001);
@@ -96,7 +55,8 @@ namespace Template {
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0009);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0010);
       await ƒS.Character.hide(characters.jasonsThoughts);
-      await ƒS.update(1);
+      await ƒS.update();
+      ƒS.Sound.fade(audio.dreamTheme, 0, 1, true);
     }
   }
   

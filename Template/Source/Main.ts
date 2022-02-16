@@ -31,7 +31,12 @@ namespace Template {
 
   //define audio
   export let audio = {
-    backgroundTheme: './Audio/BGM/TEST.mp3',
+    dreamTheme: './Audio/BGM/incompetech/Impact Prelude.mp3',
+    bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+    busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
+    skateparkTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+    schoolTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+    bowlingTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
   };
 
   //define items
@@ -58,6 +63,14 @@ namespace Template {
       name: 'Bedroom',
       background: './Images/Backgrounds/bedroom.jpg',
     },
+    bedroomNight: {
+      name: 'Bedroom Night',
+      background: './Images/Backgrounds/bedroomNight.jpg',
+    },
+    busStop: {
+      name: 'Bus stop',
+      background: './Images/Backgrounds/busStop.jpg',
+    },
   };
 
   //define characters
@@ -70,9 +83,9 @@ namespace Template {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         neutral: './Images/Characters/Jason/Jason_Neutral.png',
-        angry: './Images/Characters/test/1.jpg',
-        happy: './Images/Characters/test/1.jpg',
-        upset: './Images/Characters/test/1.jpg',
+        neutral2: './Images/Characters/Jason/Jason_Neutral2.png',
+        thinking: './Images/Characters/Jason/Jason_Thinking.png',
+        disappointed: './Images/Characters/Jason/Jason_Disappointed.png',
       },
     },
     alice: {
@@ -80,9 +93,9 @@ namespace Template {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         neutral: './Images/Characters/Alice/Alice_Neutral.png',
-        angry: './Images/Characters/test/1.jpg',
-        happy: './Images/Characters/test/1.jpg',
-        upset: './Images/Characters/test/1.jpg',
+        neutral2: './Images/Characters/Alice/Alice_Neutral2.png',
+        happy: './Images/Characters/Alice/Alice_Happy.png',
+        sad: './Images/Characters/Alice/Alice_Sad.png',
       },
     },
     thomas: {
@@ -90,9 +103,9 @@ namespace Template {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         neutral: './Images/Characters/Thomas/Thomas_Neutral.png',
-        angry: './Images/Characters/test/1.jpg',
-        happy: './Images/Characters/test/1.jpg',
-        upset: './Images/Characters/test/1.jpg',
+        neutral2: './Images/Characters/Thomas/Thomas_Neutral2.png',
+        thinking: './Images/Characters/Thomas/Thomas_Thinking.png',
+        questioning: './Images/Characters/Thomas/Thomas_Questioning.png',
       },
     },
     jasonsThoughts: {
@@ -100,6 +113,9 @@ namespace Template {
       origin: ƒS.ORIGIN.BOTTOMCENTER,
       pose: {
         neutral: './Images/Characters/JasonsThoughts/JasonsThoughts_Neutral.png',
+        neutral2: './Images/Characters/JasonsThoughts/JasonsThoughts_Neutral2.png',
+        thinking: './Images/Characters/JasonsThoughts/JasonsThoughts_Thinking.png',
+        disappointed: './Images/Characters/JasonsThoughts/JasonsThoughts_Disappointed.png',
       }
     }
   };
@@ -123,9 +139,27 @@ namespace Template {
     };
   }
 
+  export function fromMidToRight(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(50, 100) },
+      end: { translation: ƒS.positionPercent(75, 100) },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
+  export function fromMidToLeft(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(50, 100) },
+      end: { translation: ƒS.positionPercent(25, 100) },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
   //define data that will be saved
   export let dataForSave = {
-    nameProtagonist: '',
+    nameProtagonist: 'TEST123',
     reprehensibility: 0,
     firstSpellSpoken: false,
     secondSpellSpoken: false,
@@ -149,8 +183,6 @@ namespace Template {
   };
 
   //define animations for game Menu
-
-
   let gameMenu: ƒS.Menu;
 
   async function buttonFunctionalities(_option: string): Promise<void> {
@@ -209,8 +241,8 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      { id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
-      { id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
+      //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+      //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
       { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
       { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
       { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },

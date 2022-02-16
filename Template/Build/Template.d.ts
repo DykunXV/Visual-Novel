@@ -24,7 +24,12 @@ declare namespace Template {
         };
     };
     let audio: {
-        backgroundTheme: string;
+        dreamTheme: string;
+        bedroomTheme: string;
+        busStopTheme: string;
+        skateparkTheme: string;
+        schoolTheme: string;
+        bowlingTheme: string;
     };
     let items: {
         Crowbar: {
@@ -47,6 +52,14 @@ declare namespace Template {
             name: string;
             background: string;
         };
+        bedroomNight: {
+            name: string;
+            background: string;
+        };
+        busStop: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
         narrator: {
@@ -57,9 +70,9 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
-                angry: string;
-                happy: string;
-                upset: string;
+                neutral2: string;
+                thinking: string;
+                disappointed: string;
             };
         };
         alice: {
@@ -67,9 +80,9 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
-                angry: string;
+                neutral2: string;
                 happy: string;
-                upset: string;
+                sad: string;
             };
         };
         thomas: {
@@ -77,9 +90,9 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
-                angry: string;
-                happy: string;
-                upset: string;
+                neutral2: string;
+                thinking: string;
+                questioning: string;
             };
         };
         jasonsThoughts: {
@@ -87,11 +100,16 @@ declare namespace Template {
             origin: ƒ.ORIGIN2D;
             pose: {
                 neutral: string;
+                neutral2: string;
+                thinking: string;
+                disappointed: string;
             };
         };
     };
     function fromRightToOutOfCanvas(): ƒS.AnimationDefinition;
     function fromRightToLeft(): ƒS.AnimationDefinition;
+    function fromMidToRight(): ƒS.AnimationDefinition;
+    function fromMidToLeft(): ƒS.AnimationDefinition;
     let dataForSave: {
         nameProtagonist: string;
         reprehensibility: number;
