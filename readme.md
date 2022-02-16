@@ -3,8 +3,13 @@ https://dykunxv.github.io/Visual-Novel/Template/Template.html
 
 # Quellcode
 https://github.com/DykunXV/Visual-Novel/tree/main/Template/Source
+
 # Konzept-Dokument
 https://github.com/DykunXV/Visual-Novel/blob/main/Konzeption.pdf
+
+# Gepacktes Archiv
+https://github.com/DykunXV/Visual-Novel/blob/main/VisualNovelAbgabe_DennisFischer.zip
+
 ## Bewertungskriterien
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
 
