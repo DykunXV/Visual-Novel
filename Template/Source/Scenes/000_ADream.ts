@@ -18,29 +18,27 @@ namespace Template {
         }
       };
   
-      //Musik
+
       ƒS.Sound.play(audio.dreamTheme, 1, true);
   
       //In welcher Zeit wie viele Buchstaben angezeigt werden
       ƒS.Speech.setTickerDelays(20, 2); 
 
-      //Delay
-      let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)]);
-
   
       await ƒS.Location.show(locations.dream);
       await ƒS.update(
-        transition.circlewipeTop.duration,
-        transition.circlewipeTop.alpha,
-        transition.circlewipeTop.edge
+        transition.waves.duration,
+        transition.waves.alpha,
+        transition.waves.edge
       );
+
       await ƒS.Character.show(
         characters.jasonsThoughts,  
         characters.jasonsThoughts.pose.neutral,
         ƒS.positionPercent(50, 100)
       );
+      await ƒS.update();
 
-      await ƒS.update(1);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0000);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0001);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0002);

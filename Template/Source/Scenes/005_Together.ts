@@ -6,10 +6,11 @@ namespace Template {
         narrator: {
           T0000: 'Der Rest der Woche vergeht recht unspektakulär. Uni, Lernen, Schlafen, um es genauer zu beschreiben.',
           T0001: 'Jason steht aus seinem Bett auf.',
-          T0002: 'Jason macht sich bereit für das Treffen und kommt dann in der Bowlinghalle an.',
+          T0002: 'Jason macht sich bereit für das Treffen und kommt dann vor der Bowlinghalle an.',
           T0003: 'Jason und Alice verbringen die nächsten Stunden voller Spaß auf der Bowlingbahn.',
           T0004: 'Jason macht einen Salto und fällt dabei um.',
           T0005: 'Nach einem langem Gelächter, verabschieden sich die beiden und begeben sich zu Bett.',
+          T0006: 'Nach einem langen Tag, verabschieden sich die beiden und begeben sich zu Bett.',
         },
         jason: {
             T0000: '*Aufsteh Geräusche*',
@@ -51,35 +52,184 @@ namespace Template {
             T0012: 'Mach dir kein Kopf, Jason.',
         }
       };
-  
-      //Musik
-      ƒS.Sound.fade(audio.bedroomTheme, 0.02, 2, true)
-  
-      //In welcher Zeit wie viele Buchstaben angezeigt werden
-      ƒS.Speech.setTickerDelays(20, 2); 
+
+      await ƒS.Location.show(locations.bedroom);
+      await ƒS.update(
+        transition.circlewipeClockwise.duration,
+        transition.circlewipeClockwise.alpha,
+        transition.circlewipeClockwise.edge
+      );
 
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0000);
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0001);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0000);
+
       await ƒS.Speech.tell(characters.jason, text.jason.T0001);
       await ƒS.Speech.tell(characters.jason, text.jason.T0002);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Location.show(locations.bowlingAlley);
+      ƒS.Sound.fade(audio.bedroomTheme, 0, 1, true);
+      ƒS.Sound.play(audio.bowlingTheme, 1, true);
+      await ƒS.update(transition.circlewipeClockwise.duration,
+        transition.circlewipeClockwise.alpha,
+        transition.circlewipeClockwise.edge);
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0002);
+
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.happy,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0000);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral2,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0003);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.neutral2,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0001);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.thinking,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0004);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.happy,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0002);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.disappointed,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0004);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.sad,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0003);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral2,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0005);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.happy,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0004);
+
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0003);
+
+	  await ƒS.Character.hide(characters.jason);
+    await ƒS.Character.show(
+      characters.jason,  
+      characters.jason.pose.disappointed,
+      ƒS.positionPercent(25, 100)
+    );
+    await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0006);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.neutral2,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0005);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0007);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.happy,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0006);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.thinking,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0008);
+
+      await ƒS.Character.hide(characters.alice);
+      await ƒS.Character.show(
+        characters.alice,  
+        characters.alice.pose.neutral,
+        ƒS.positionPercent(75, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0007);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.disappointed,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0009);
 
       let firstDialogueElementOptions = {
@@ -94,37 +244,187 @@ namespace Template {
       
       switch (firstDialogueElement) {
         case firstDialogueElementOptions.iChooseImpress:
-            await ƒS.Speech.tell(characters.jason, text.jason.T0010);
-            await ƒS.Speech.tell(characters.narrator, text.narrator.T0004);
-            await ƒS.Speech.tell(characters.alice, text.alice.T0008);
-            await ƒS.Speech.tell(characters.jason, text.jason.T0012);
-            await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
+          await ƒS.Character.hide(characters.jason);
+          await ƒS.Character.show(
+            characters.jason,  
+            characters.jason.pose.neutral2,
+            ƒS.positionPercent(25, 100)
+          );
+          await ƒS.update();
+          await ƒS.Speech.tell(characters.jason, text.jason.T0010);
+
+          await ƒS.Speech.tell(characters.narrator, text.narrator.T0004);
+
+          await ƒS.Character.hide(characters.alice);
+          await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.happy,
+              ƒS.positionPercent(75, 100)
+            );
+          await ƒS.update();
+          await ƒS.Speech.tell(characters.alice, text.alice.T0008);
+
+          await ƒS.Character.hide(characters.jason);
+          await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.thinking,
+              ƒS.positionPercent(25, 100)
+            );
+          await ƒS.update();
+          await ƒS.Speech.tell(characters.jason, text.jason.T0012);
+
+          await ƒS.Character.hide(characters.alice);
+          await ƒS.Character.hide(characters.jason);
+          await ƒS.Location.show(locations.bedroomNight);
+          await ƒS.update(transition.circlewipeClockwise.duration,
+            transition.circlewipeClockwise.alpha,
+            transition.circlewipeClockwise.edge);
+          ƒS.Sound.fade(audio.bowlingTheme, 0, 1, true);
+          ƒS.Sound.play(audio.bedroomTheme, 1, true);
+          await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
           break;
         case firstDialogueElementOptions.iChooseWish:
           if (dataForSave.reprehensibility <= 15) {
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.thinking,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0013);
+
             await ƒS.Speech.tell(characters.jason, text.jason.T0014);
             await ƒS.Speech.tell(characters.jason, text.jason.T0015);
             await ƒS.Speech.tell(characters.jason, text.jason.T0016);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.sad,
+              ƒS.positionPercent(75, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.alice, text.alice.T0009);
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.neutral,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0017);
             await ƒS.Speech.tell(characters.jason, text.jason.T0018);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.happy,
+              ƒS.positionPercent(75, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.alice, text.alice.T0010);
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.neutral2,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0010);
+
             await ƒS.Speech.tell(characters.narrator, text.narrator.T0004);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.happy,
+              ƒS.positionPercent(75, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.alice, text.alice.T0008);
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.thinking,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0012);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Location.show(locations.bedroomNight);
+            await ƒS.update(transition.circlewipeClockwise.duration,
+              transition.circlewipeClockwise.alpha,
+              transition.circlewipeClockwise.edge);
+            ƒS.Sound.fade(audio.bowlingTheme, 0, 1, true);
+            ƒS.Sound.play(audio.bedroomTheme, 1, true);
             await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
             break;
           } else {
             dataForSave.thirdSpellSpoken = true;
             dataForSave.reprehensibility += 5;
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.thinking,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0011);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.sad,
+              ƒS.positionPercent(75, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.alice, text.alice.T0011);
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.neutral2,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0019);
             await ƒS.Speech.tell(characters.jason, text.jason.T0020);
+
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.show(
+              characters.alice,  
+              characters.alice.pose.neutral2, 
+              ƒS.positionPercent(75, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.alice, text.alice.T0012);
+
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Character.show(
+              characters.jason,  
+              characters.jason.pose.disappointed,
+              ƒS.positionPercent(25, 100)
+            );
+            await ƒS.update();
             await ƒS.Speech.tell(characters.jason, text.jason.T0021);
+
+            
+            await ƒS.Character.hide(characters.alice);
+            await ƒS.Character.hide(characters.jason);
+            await ƒS.Location.show(locations.bedroomNight);
+            await ƒS.update(transition.circlewipeClockwise.duration,
+              transition.circlewipeClockwise.alpha,
+              transition.circlewipeClockwise.edge);
+            ƒS.Sound.fade(audio.bowlingTheme, 0, 1, true);
+            ƒS.Sound.play(audio.bedroomTheme, 1, true);
+            await ƒS.Speech.tell(characters.narrator, text.narrator.T0006);
             break;
           }
       }

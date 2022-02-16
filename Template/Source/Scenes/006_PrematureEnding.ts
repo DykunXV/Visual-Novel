@@ -32,15 +32,25 @@ namespace Template {
         },
       };
   
-      //Musik
-      ƒS.Sound.fade(audio.bedroomTheme, 0.02, 2, true)
-  
-      //In welcher Zeit wie viele Buchstaben angezeigt werden
-      ƒS.Speech.setTickerDelays(20, 2); 
+      await ƒS.Location.show(locations.bedroom);
+      await ƒS.update(
+        transition.circlewipeClockwise.duration,
+        transition.circlewipeClockwise.alpha,
+        transition.circlewipeClockwise.edge
+      );
 
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0000);
+
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0000);
+
       await ƒS.Speech.tell(characters.jason, text.jason.T0001);
+      ƒS.Sound.play(soundEffects.phoneVibration, 1, false);
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0001);
       await ƒS.Speech.tell(characters.jason, text.jason.T0002);
       if (dataForSave.thirdSpellSpoken == false) {
@@ -48,9 +58,23 @@ namespace Template {
         await ƒS.Speech.tell(characters.jason, text.jason.T0003);
         await ƒS.Speech.tell(characters.narrator, text.narrator.T0003);
       } else {
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.disappointed,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0004);
         await ƒS.Speech.tell(characters.narrator, text.narrator.T0004);
         await ƒS.Speech.tell(characters.jason, text.jason.T0005);
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.thinking,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0006);
         await ƒS.Speech.tell(characters.jason, text.jason.T0007);
 
@@ -66,30 +90,65 @@ namespace Template {
           
           switch (firstDialogueElement) {
             case firstDialogueElementOptions.iChooseGoodWish:
+              await ƒS.Character.hide(characters.jason);
+              await ƒS.Character.show(
+                characters.jason,  
+                characters.jason.pose.neutral2,
+                ƒS.positionPercent(50, 100)
+              );
+              await ƒS.update();
               await ƒS.Speech.tell(characters.jason, text.jason.T0008);
               await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
               await ƒS.Speech.tell(characters.narrator, text.narrator.T0006);
               break;
             case firstDialogueElementOptions.iChooseBadWish:
               if (dataForSave.reprehensibility <= 25) {
+                await ƒS.Character.hide(characters.jason);
+                await ƒS.Character.show(
+                  characters.jason,  
+                  characters.jason.pose.neutral2,
+                  ƒS.positionPercent(50, 100)
+                );
+                await ƒS.update();
                 await ƒS.Speech.tell(characters.jason, text.jason.T0009);
+                await ƒS.Character.hide(characters.jason);
+                await ƒS.Character.show(
+                  characters.jason,  
+                  characters.jason.pose.disappointed,
+                  ƒS.positionPercent(50, 100)
+                );
+                await ƒS.update();
                 await ƒS.Speech.tell(characters.jason, text.jason.T0010);
                 await ƒS.Speech.tell(characters.jason, text.jason.T0011);
                 await ƒS.Speech.tell(characters.jason, text.jason.T0012);
+                await ƒS.Character.hide(characters.jason);
+                await ƒS.Character.show(
+                  characters.jason,  
+                  characters.jason.pose.neutral,
+                  ƒS.positionPercent(50, 100)
+                );
+                await ƒS.update();
                 await ƒS.Speech.tell(characters.jason, text.jason.T0008);
                 await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
                 await ƒS.Speech.tell(characters.narrator, text.narrator.T0006);           
                 break;
               } else {
+                await ƒS.Character.hide(characters.jason);
+                await ƒS.Character.show(
+                  characters.jason,  
+                  characters.jason.pose.neutral2,
+                  ƒS.positionPercent(50, 100)
+                );
+                await ƒS.update();
                 await ƒS.Speech.tell(characters.jason, text.jason.T0013);
                 await ƒS.Speech.tell(characters.narrator, text.narrator.T0007);
                 await ƒS.Speech.tell(characters.narrator, text.narrator.T0008); 
                 break;
               }
-
           }
-      }
 
+      }
+      await ƒS.Character.hide(characters.jason);
     }
   }
   

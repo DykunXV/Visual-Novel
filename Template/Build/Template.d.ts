@@ -34,6 +34,7 @@ declare namespace Template {
     let soundEffects: {
         flashback: string;
         phoneVibration: string;
+        schoolBell: string;
     };
     let locations: {
         dream: {
@@ -53,6 +54,10 @@ declare namespace Template {
             background: string;
         };
         skatepark: {
+            name: string;
+            background: string;
+        };
+        school: {
             name: string;
             background: string;
         };
@@ -106,8 +111,6 @@ declare namespace Template {
             };
         };
     };
-    function fromRightToOutOfCanvas(): ƒS.AnimationDefinition;
-    function fromRightToLeft(): ƒS.AnimationDefinition;
     function fromMidToRight(): ƒS.AnimationDefinition;
     function fromMidToLeft(): ƒS.AnimationDefinition;
     let dataForSave: {
@@ -139,6 +142,9 @@ declare namespace Template {
 }
 declare namespace Template {
     function PrematureEnding(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Credits(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Introduction(): ƒS.SceneReturn;

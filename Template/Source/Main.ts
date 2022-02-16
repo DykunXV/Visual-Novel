@@ -35,14 +35,15 @@ namespace Template {
     bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
     busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
     skateparkTheme: './Audio/BGM/incompetech/Vivacity.mp3',
-    schoolTheme: './Audio/BGM/incompetech/????',
+    schoolTheme: './Audio/BGM/incompetech/Sincerely.mp3',
     bowlingTheme: './Audio/BGM/incompetech/Smooth Lovin.mp3',
   };
 
-  //define items
+  //define soundeffects
   export let soundEffects = {
     flashback: './Audio/Soundeffects/Flashback.m4a',
     phoneVibration: './Audio/Soundeffects/Phone Vibration.wav',
+    schoolBell: './Audio/Soundeffects/School Bell.wav',
   };
 
   //define backgrounds
@@ -66,6 +67,10 @@ namespace Template {
     skatepark: {
       name: 'Skatepark',
       background: './Images/Backgrounds/skatepark.jpg',
+    },
+    school: {
+      name: 'School',
+      background: './Images/Backgrounds/school.jpg',
     },
     bowlingAlley: {
       name: 'Bowling Alley',
@@ -121,24 +126,6 @@ namespace Template {
   };
 
   //define animations
-  export function fromRightToOutOfCanvas(): ƒS.AnimationDefinition {
-    return {
-      start: { translation: ƒS.positionPercent(30, 100) },
-      end: { translation: ƒS.positionPercent(120, 100) },
-      duration: 1,
-      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
-    };
-  }
-
-  export function fromRightToLeft(): ƒS.AnimationDefinition {
-    return {
-      start: { translation: ƒS.positions.bottomright },
-      end: { translation: ƒS.positions.bottomleft },
-      duration: 1,
-      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
-    };
-  }
-
   export function fromMidToRight(): ƒS.AnimationDefinition {
     return {
       start: { translation: ƒS.positionPercent(50, 100) },
@@ -241,13 +228,14 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
-      //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-      //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+      { id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+      { id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
+      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
       { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
       { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
       { id: '005', scene: Together, name: 'Zweisamkeit', next: '006' },
-      { id: '006', scene: PrematureEnding, name: 'Vorzeitiges Ende'},
+      { id: '006', scene: PrematureEnding, name: 'Vorzeitiges Ende', next: '007'},
+      { id: '007', scene: Credits, name: 'Credits'},
     ];
 
     let uiElement: HTMLElement = document.querySelector('[type=interface]');

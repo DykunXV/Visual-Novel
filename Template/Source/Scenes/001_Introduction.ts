@@ -68,6 +68,14 @@ namespace Template {
       await ƒS.Speech.tell(characters.jason, text.jason.T0004);
       await ƒS.Speech.tell(characters.jason, text.jason.T0005);
       await ƒS.Speech.tell(characters.jason, text.jason.T0006);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.disappointed,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0007);
       await ƒS.Speech.tell(characters.jason, text.jason.T0008);
       await ƒS.Speech.tell(characters.jason, text.jason.T0009);

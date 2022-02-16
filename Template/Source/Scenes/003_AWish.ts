@@ -220,6 +220,7 @@ namespace Template {
 
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0004);
 
+      ƒS.Sound.fade(audio.bedroomTheme, 0, 1, true);
       ƒS.Sound.play(audio.skateparkTheme, 1, true);
       await ƒS.Location.show(locations.skatepark);
       await ƒS.Character.hide(characters.jason)
