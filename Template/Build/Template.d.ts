@@ -120,6 +120,7 @@ declare namespace Template {
         firstSpellSpoken: boolean;
         secondSpellSpoken: boolean;
         thirdSpellSpoken: boolean;
+        masterVolume: number;
     };
     function showCredits(): void;
     function addReprehensibility(reprehensibility: number): void;

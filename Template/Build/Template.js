@@ -154,6 +154,7 @@ var Template;
         firstSpellSpoken: false,
         secondSpellSpoken: false,
         thirdSpellSpoken: false,
+        masterVolume: 1,
     };
     //add custom classes
     function showCredits() {
@@ -185,6 +186,8 @@ var Template;
     let inGameMenu = {
         save: 'Save',
         load: 'Load',
+        increaseVolume: 'Volume +',
+        decreaseVolume: 'Volume -',
         close: 'Close',
     };
     //define animations for game Menu
@@ -197,6 +200,16 @@ var Template;
                 break;
             case inGameMenu.load:
                 await Template.ƒS.Progress.load();
+                break;
+            case inGameMenu.increaseVolume:
+                Template.dataForSave.masterVolume += 0.05;
+                console.log(Template.dataForSave.masterVolume);
+                Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
+                break;
+            case inGameMenu.decreaseVolume:
+                Template.dataForSave.masterVolume -= 0.05;
+                console.log(Template.dataForSave.masterVolume);
+                Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
                 break;
             case inGameMenu.close:
                 gameMenu.close();

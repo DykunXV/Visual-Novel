@@ -160,6 +160,7 @@ namespace Template {
     firstSpellSpoken: false,
     secondSpellSpoken: false,
     thirdSpellSpoken: false,
+    masterVolume: 1,
   };
 
 
@@ -193,6 +194,8 @@ namespace Template {
   let inGameMenu = {
     save: 'Save',
     load: 'Load',
+    increaseVolume: 'Volume +',
+    decreaseVolume: 'Volume -',
     close: 'Close',
   };
 
@@ -208,6 +211,16 @@ namespace Template {
       case inGameMenu.load:
         await ƒS.Progress.load();
         break;
+      case inGameMenu.increaseVolume:
+        dataForSave.masterVolume += 0.05;
+        console.log(dataForSave.masterVolume);
+        ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
+        break;
+      case inGameMenu.decreaseVolume:
+        dataForSave.masterVolume -= 0.05;
+        console.log(dataForSave.masterVolume);
+        ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
+        break;  
       case inGameMenu.close:
         gameMenu.close();
         document.getElementById('scene').style.display = 'inline-block';
