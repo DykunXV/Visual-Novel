@@ -1,3 +1,8 @@
+# Steuerungshinweis
+F8 = Speichern des Spielstands
+F9 = Laden eines Spielstands
+F10 = Menü öffnen
+
 # Github-Pages Link
 https://dykunxv.github.io/Visual-Novel/Template/Template.html
 
@@ -33,12 +38,3 @@ https://github.com/DykunXV/Visual-Novel/blob/main/VisualNovelAbgabe_DennisFische
 | 13 | Styling          | Ich habe sehr viel Wert auf CSS gelegt und alles was verändert werden konnte, wurde auch verändert. Buttons, Text, Menüs und so weiter.                                                                                                                                                                                 |
 | 14 | Enden          | Es gibt drei verschiedene Spielenden, die davon abhängen, ob der Spieler Zaubersprüche benutzt hat und wie viel reprehensibility: number er angesammelt hat. Der Spieler erhält Informatione, wie er die anderen Enden erreicht, nachdem er ein Ending erreicht hat.                                                                                                                                                                               |
 <br>
-
-##  Abgabeformat
-
-* Die Konzeption soll als .pdf-Dokument abgegeben werden.
-* Platziere einen Link in der Readme-Datei deines VisualNovel-Repositories auf Github auf die fertige und in Github-Pages lauffähige Anwendung.
-* Platziere ebenso Links zu den Stellen in deinem Repository, an denen der Quellcode und das Konzept-Dokument zu finden sind.
-* Stelle zudem auf diese Art dort auch ein gepacktes Archiv zur Verfügung, welches folgende Daten enthält
-  * Das Konzept-Dokument 
-  * Die Projektordner inklusive aller erforderlichen Dateien, also auch Bild- und Audiodaten
