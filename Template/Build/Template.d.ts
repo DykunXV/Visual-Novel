@@ -122,6 +122,9 @@ declare namespace Template {
         thirdSpellSpoken: boolean;
     };
     function showCredits(): void;
+    function addReprehensibility(reprehensibility: number): void;
+    function removeReprehensibility(reprehensibility: number): void;
+    function showInfo(info: string): void;
 }
 declare namespace Template {
     function ADream(): ƒS.SceneReturn;
@@ -146,13 +149,4 @@ declare namespace Template {
 }
 declare namespace Template {
     function Credits(): ƒS.SceneReturn;
-}
-declare namespace Template {
-    function Introduction(): ƒS.SceneReturn;
-}
-declare namespace Template {
-    function Test(): ƒS.SceneReturn;
-}
-declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
 }

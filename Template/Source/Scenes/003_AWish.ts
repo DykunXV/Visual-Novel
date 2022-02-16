@@ -203,7 +203,7 @@ namespace Template {
           await ƒS.Speech.tell(characters.alice, text.alice.T0001);
           break;
         case firstDialogueElementOptions.iChooseRude:
-          dataForSave.reprehensibility += 5;
+          addReprehensibility(5);
           await ƒS.Character.hide(characters.jason);
           await ƒS.Character.show(
             characters.jason,  

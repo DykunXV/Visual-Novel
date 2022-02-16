@@ -103,6 +103,7 @@ namespace Template {
               break;
             case firstDialogueElementOptions.iChooseBadWish:
               if (dataForSave.reprehensibility <= 20) {
+                showInfo("Aktion fehlgeschlagen, da zu wenig Verwerflichkeit vorhanden ist (20 Verwerflichkeit benötigt).");
                 await ƒS.Character.hide(characters.jason);
                 await ƒS.Character.show(
                   characters.jason,  

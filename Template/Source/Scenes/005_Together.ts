@@ -284,7 +284,8 @@ namespace Template {
           await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
           break;
         case firstDialogueElementOptions.iChooseWish:
-          if (dataForSave.reprehensibility <= 15) {
+          if (dataForSave.reprehensibility <= 10) {
+            showInfo("Aktion fehlgeschlagen, da zu wenig Verwerflichkeit vorhanden ist (10 Verwerflichkeit benötigt).");
             await ƒS.Character.hide(characters.jason);
             await ƒS.Character.show(
               characters.jason,  
@@ -367,7 +368,7 @@ namespace Template {
             break;
           } else {
             dataForSave.thirdSpellSpoken = true;
-            dataForSave.reprehensibility += 5;
+            addReprehensibility(5);
 
             await ƒS.Character.hide(characters.jason);
             await ƒS.Character.show(

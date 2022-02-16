@@ -152,19 +152,35 @@ var Template;
         nameProtagonist: 'Jason',
         reprehensibility: 0,
         firstSpellSpoken: true,
-        secondSpellSpoken: false,
+        secondSpellSpoken: true,
         thirdSpellSpoken: false,
     };
-    //add custom class
+    //add custom classes
     function showCredits() {
-        Template.ƒS.Text.addClass("credits");
+        Template.ƒS.Text.addClass("info");
         Template.ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
     Kevin MacLeod (incompetech.com)
     Licensed under Creative Commons: By Attribution 3.0
     http://creativecommons.org/licenses/by/3.0/`);
-        // showCredits();
     }
     Template.showCredits = showCredits;
+    function addReprehensibility(reprehensibility) {
+        Template.dataForSave.reprehensibility += reprehensibility;
+        Template.ƒS.Text.addClass("info");
+        Template.ƒS.Text.print(reprehensibility.toString() + ' Verwerflickeit erhalten');
+    }
+    Template.addReprehensibility = addReprehensibility;
+    function removeReprehensibility(reprehensibility) {
+        Template.dataForSave.reprehensibility -= reprehensibility;
+        Template.ƒS.Text.addClass("info");
+        Template.ƒS.Text.print(reprehensibility.toString() + ' Verwerflickeit verloren');
+    }
+    Template.removeReprehensibility = removeReprehensibility;
+    function showInfo(info) {
+        Template.ƒS.Text.addClass("info");
+        Template.ƒS.Text.print(info);
+    }
+    Template.showInfo = showInfo;
     //define in game Menu
     let inGameMenu = {
         save: 'Save',
@@ -227,10 +243,10 @@ var Template;
         gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
         buttonFunctionalities("Close");
         let scenes = [
-            //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
-            //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-            //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
-            //{ id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
+            { id: '000', scene: Template.ADream, name: 'Ein Traum', next: '001' },
+            { id: '001', scene: Template.MyIntroduction, name: 'Einführung', next: '002' },
+            { id: '002', scene: Template.MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+            { id: '003', scene: Template.AWish, name: 'Ein Wunsch', next: '004' },
             { id: '004', scene: Template.ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
             { id: '005', scene: Template.Together, name: 'Zweisamkeit', next: '006' },
             { id: '006', scene: Template.PrematureEnding, name: 'Vorzeitiges Ende', next: '007' },
@@ -531,7 +547,7 @@ var Template;
         let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
         switch (firstDialogueElement) {
             case firstDialogueElementOptions.iChooseWaldmeister:
-                Template.dataForSave.reprehensibility += 5;
+                Template.addReprehensibility(5);
                 await Template.ƒS.Character.hide(Template.characters.alice);
                 await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral2, Template.ƒS.positionPercent(75, 100));
                 await Template.ƒS.update();
@@ -542,7 +558,7 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
                 break;
             case firstDialogueElementOptions.iChooseKirsche:
-                Template.dataForSave.reprehensibility += 5;
+                Template.addReprehensibility(5);
                 await Template.ƒS.Character.hide(Template.characters.thomas);
                 await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update();
@@ -616,7 +632,7 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0003);
                 break;
             case secondDialogueElementOptions.iChooseRude:
-                Template.dataForSave.reprehensibility += 5;
+                Template.addReprehensibility(5);
                 Template.dataForSave.firstSpellSpoken = true;
                 await Template.ƒS.Character.hide(Template.characters.jason);
                 await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
@@ -795,7 +811,7 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0001);
                 break;
             case firstDialogueElementOptions.iChooseRude:
-                Template.dataForSave.reprehensibility += 5;
+                Template.addReprehensibility(5);
                 await Template.ƒS.Character.hide(Template.characters.jason);
                 await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update();
@@ -1046,10 +1062,11 @@ var Template;
             let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
             switch (firstDialogueElement) {
                 case firstDialogueElementOptions.iChooseGood:
+                    Template.removeReprehensibility(10);
                     await Template.ƒS.Speech.tell(Template.characters.jason, '"Ich werde sie natürlich für das Gute benutzen."');
                     break;
                 case firstDialogueElementOptions.iChooseBad:
-                    Template.dataForSave.reprehensibility += 10;
+                    Template.addReprehensibility(10);
                     await Template.ƒS.Speech.tell(Template.characters.jason, '"Ist es so verkehrt, wenn ich sie für meine eigenen Zwecke benutze?"');
                     break;
             }
@@ -1189,7 +1206,7 @@ var Template;
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0020);
                     break;
                 case secondDialogueElementOptions.iChooseNo:
-                    Template.dataForSave.reprehensibility += 10;
+                    Template.addReprehensibility(10);
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0017);
                     await Template.ƒS.Speech.tell('Dozentin', text.dozentin.T0003);
                     await Template.ƒS.Character.hide(Template.characters.jason);
@@ -1199,6 +1216,7 @@ var Template;
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0020);
                     break;
                 case secondDialogueElementOptions.iChooseWish:
+                    Template.addReprehensibility(5);
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0018);
                     await Template.ƒS.Speech.tell('Dozentin', text.dozentin.T0004);
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0021);
@@ -1234,14 +1252,14 @@ var Template;
             await Template.ƒS.update();
             switch (thirdDialogueElement) {
                 case thirdDialogueElementOptions.iChooseLearn:
-                    Template.dataForSave.reprehensibility -= 5;
+                    Template.removeReprehensibility(5);
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0029);
                     await Template.ƒS.Character.hide(Template.characters.jason);
                     await Template.ƒS.update();
                     await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0005);
                     break;
                 case thirdDialogueElementOptions.iChooseMagic:
-                    Template.dataForSave.reprehensibility += 5;
+                    Template.addReprehensibility(5);
                     await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0030);
                     await Template.ƒS.Character.hide(Template.characters.jason);
                     await Template.ƒS.update();
@@ -1415,7 +1433,8 @@ var Template;
                 await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0005);
                 break;
             case firstDialogueElementOptions.iChooseWish:
-                if (Template.dataForSave.reprehensibility <= 15) {
+                if (Template.dataForSave.reprehensibility <= 10) {
+                    Template.showInfo("Aktion fehlgeschlagen, da zu wenig Verwerflichkeit vorhanden ist (10 Verwerflichkeit benötigt).");
                     await Template.ƒS.Character.hide(Template.characters.jason);
                     await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
                     await Template.ƒS.update();
@@ -1460,7 +1479,7 @@ var Template;
                 }
                 else {
                     Template.dataForSave.thirdSpellSpoken = true;
-                    Template.dataForSave.reprehensibility += 5;
+                    Template.addReprehensibility(5);
                     await Template.ƒS.Character.hide(Template.characters.jason);
                     await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
                     await Template.ƒS.update();
@@ -1571,6 +1590,7 @@ var Template;
                     break;
                 case firstDialogueElementOptions.iChooseBadWish:
                     if (Template.dataForSave.reprehensibility <= 20) {
+                        Template.showInfo("Aktion fehlgeschlagen, da zu wenig Verwerflichkeit vorhanden ist (20 Verwerflichkeit benötigt).");
                         await Template.ƒS.Character.hide(Template.characters.jason);
                         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(50, 100));
                         await Template.ƒS.update();
@@ -1635,129 +1655,8 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0006);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0007);
         Template.showCredits();
+        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0008);
     }
     Template.Credits = Credits;
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
-    async function Introduction() {
-        console.log('FudgeStory Introduction Scene starting');
-        let text = {
-            narrator: {
-                T0000: '',
-                T0001: '',
-            },
-            jason: {
-                T0000: `Hi ${Template.dataForSave.nameProtagonist} bra`,
-                T0001: 'Bye jason',
-            },
-            alice: {
-                T0000: 'Hi Alice',
-                T0001: 'Bye Alice',
-            },
-        };
-        //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
-        //In welcher Zeit wie viele Buchstaben angezeigt werden
-        Template.ƒS.Speech.setTickerDelays(20, 2);
-        //Delay
-        let signalDelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(2)]);
-        await Template.ƒS.Location.show(Template.locations.bedroom);
-        await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge);
-        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.happy, Template.ƒS.positionPercent(30, 100));
-        //console.log(items);
-        //ƒS.Inventory.add(items.Blowbar);
-        //ƒS.Inventory.open();
-        await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.narrator, 'Namen eingeben ');
-        Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
-        await Template.ƒS.Speech.tell(Template.characters.jason, `Hi ${Template.dataForSave.nameProtagonist} bra`);
-        await Template.ƒS.Character.animate(Template.characters.jason, Template.characters.jason.pose.happy, fromRightToLeft());
-        await signalDelay();
-        await Template.ƒS.Speech.tell(Template.characters.jason, 'hey, manueller text');
-        await Template.ƒS.Character.hide(Template.characters.jason);
-        let firstDialogueElementOptions = {
-            iSayOk: 'Okay.',
-            iSayYes: 'Ja.',
-            iSayNo: 'Nein.',
-        };
-        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
-        switch (firstDialogueElement) {
-            case firstDialogueElementOptions.iSayOk:
-                await Template.ƒS.Speech.tell(Template.characters.jason, 'hey, manueller text');
-                break;
-            case firstDialogueElementOptions.iSayYes:
-                await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.angry, Template.ƒS.positionPercent(30, 100));
-                break;
-            case firstDialogueElementOptions.iSayNo:
-                await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0000);
-        }
-        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0001);
-    }
-    Template.Introduction = Introduction;
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
-    async function Test() {
-        console.log('FudgeStory Test Scene starting');
-        let text = {
-            narrator: {
-                T0000: '',
-                T0001: '',
-            },
-            john: {
-                T0000: `Hi ${Template.dataForSave.nameProtagonist} bra`,
-                T0001: 'Bye John',
-            },
-            mario: {
-                T0000: 'Hi Mario',
-                T0001: 'Bye Mario',
-            },
-        };
-        //Musik
-        Template.ƒS.Sound.fade(Template.audio.backgroundTheme, 0.02, 2, true);
-        //In welcher Zeit wie viele Buchstaben angezeigt werden
-        Template.ƒS.Speech.setTickerDelays(20, 2);
-        //Delay
-        let signalDelay = Template.ƒS.Progress.defineSignal([() => Template.ƒS.Progress.delay(2)]);
-        await Template.ƒS.Location.show(Template.locations.bedroom);
-        await Template.ƒS.update(Template.transition.clock.duration, Template.transition.clock.alpha, Template.transition.clock.edge);
-        await Template.ƒS.Character.show(Template.characters.john, Template.characters.john.pose.happy, Template.ƒS.positionPercent(30, 100));
-        await Template.ƒS.update(1);
-        await Template.ƒS.Speech.tell(Template.characters.narrator, 'Namen eingeben2 ');
-        Template.dataForSave.nameProtagonist = await Template.ƒS.Speech.getInput();
-        await Template.ƒS.Speech.tell(Template.characters.john, `Hi ${Template.dataForSave.nameProtagonist} bra`);
-        await Template.ƒS.Character.animate(Template.characters.john, Template.characters.john.pose.happy, fromRightToLeft());
-        await signalDelay();
-        await Template.ƒS.Speech.tell(Template.characters.john, 'hey, manueller text');
-        await Template.ƒS.Character.hide(Template.characters.john);
-        //await ƒS.Inventory.add(items.crowbar);
-        //await ƒS.Inventory.open();
-        let firstDialogueElementOptions = {
-            iSayOk: 'Okay.',
-            iSayYes: 'Ja.',
-            iSayNo: 'Nein.',
-        };
-        let firstDialogueElement = await Template.ƒS.Menu.getInput(firstDialogueElementOptions, 'player-choice');
-        switch (firstDialogueElement) {
-            case firstDialogueElementOptions.iSayOk:
-                await Template.ƒS.Speech.tell(Template.characters.john, 'hey, manueller text');
-                break;
-            case firstDialogueElementOptions.iSayYes:
-                await Template.ƒS.Character.show(Template.characters.mario, Template.characters.mario.pose.angry, Template.ƒS.positionPercent(30, 100));
-                break;
-            case firstDialogueElementOptions.iSayNo:
-                await Template.ƒS.Speech.tell(Template.characters.mario, text.mario.T0000);
-        }
-        await Template.ƒS.Speech.tell(Template.characters.john, text.john.T0001);
-    }
-    Template.Test = Test;
-})(Template || (Template = {}));
-var Template;
-(function (Template) {
-    async function Scene() {
-        console.log("FudgeStory Template Scene starting");
-    }
-    Template.Scene = Scene;
 })(Template || (Template = {}));
 //# sourceMappingURL=Template.js.map

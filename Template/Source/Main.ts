@@ -158,20 +158,35 @@ namespace Template {
     nameProtagonist: 'Jason',
     reprehensibility: 0,
     firstSpellSpoken: true,
-    secondSpellSpoken: false,
+    secondSpellSpoken: true,
     thirdSpellSpoken: false,
   };
 
 
-  //add custom class
+  //add custom classes
   export function showCredits(): void {
-    ƒS.Text.addClass("credits");
+    ƒS.Text.addClass("info");
     ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
     Kevin MacLeod (incompetech.com)
     Licensed under Creative Commons: By Attribution 3.0
     http://creativecommons.org/licenses/by/3.0/`);
+  }
 
-    // showCredits();
+  export function addReprehensibility(reprehensibility: number): void {
+    dataForSave.reprehensibility += reprehensibility;
+    ƒS.Text.addClass("info");
+    ƒS.Text.print(reprehensibility.toString() + ' Verwerflickeit erhalten');
+  }
+
+  export function removeReprehensibility(reprehensibility: number): void {
+    dataForSave.reprehensibility -= reprehensibility;
+    ƒS.Text.addClass("info");
+    ƒS.Text.print(reprehensibility.toString() + ' Verwerflickeit verloren');
+  }
+
+  export function showInfo(info: string): void {
+    ƒS.Text.addClass("info");
+    ƒS.Text.print(info);
   }
 
   //define in game Menu
@@ -240,10 +255,10 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
-      //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-      //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
-      //{ id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
+      { id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+      { id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
+      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+      { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
       { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
       { id: '005', scene: Together, name: 'Zweisamkeit', next: '006' },
       { id: '006', scene: PrematureEnding, name: 'Vorzeitiges Ende', next: '007'},

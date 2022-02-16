@@ -207,7 +207,7 @@ namespace Template {
 
     switch (firstDialogueElement) {
       case firstDialogueElementOptions.iChooseWaldmeister:
-        dataForSave.reprehensibility += 5;
+        addReprehensibility(5);
 
         await ƒS.Character.hide(characters.alice);
         await ƒS.Character.show(
@@ -229,7 +229,7 @@ namespace Template {
 
         break;
       case firstDialogueElementOptions.iChooseKirsche:
-        dataForSave.reprehensibility += 5;
+        addReprehensibility(5);
 
         await ƒS.Character.hide(characters.thomas);
         await ƒS.Character.show(
@@ -371,7 +371,7 @@ namespace Template {
         await ƒS.Speech.tell(characters.narrator, text.narrator.T0003);
         break;
       case secondDialogueElementOptions.iChooseRude:
-        dataForSave.reprehensibility += 5;
+        addReprehensibility(5);
         dataForSave.firstSpellSpoken = true;
 
         await ƒS.Character.hide(characters.jason);

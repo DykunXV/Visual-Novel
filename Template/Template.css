@@ -44,7 +44,7 @@ canvas {
 
 /* Splashscreen */
 dialog {
-  background-image: url('Images/Backgrounds/starry.gif');
+  background-image: url('Images/Backgrounds/bedroomNight.jpg');
 }
 
 .gameMenu {
@@ -235,6 +235,13 @@ content input:focus {
   width: 20vw;
 
   animation: none;
+}
+
+.info {
+  background: #00000080;
+  color: white;
+  border-radius: 50px;
+  border-color: red;
 }
 
 /* Animations */

@@ -40,6 +40,7 @@ namespace Template {
       await ƒS.Speech.tell(characters.jason, text.jason.T0006);
       await ƒS.Speech.tell(characters.jason, text.jason.T0007);
       showCredits();
+      await ƒS.Speech.tell(characters.jason, text.jason.T0008);
 
     }
   }

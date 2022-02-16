@@ -134,10 +134,11 @@ namespace Template {
           
         switch (firstDialogueElement) {
           case firstDialogueElementOptions.iChooseGood:
+            removeReprehensibility(10);
             await ƒS.Speech.tell(characters.jason, '"Ich werde sie natürlich für das Gute benutzen."');
             break;
           case firstDialogueElementOptions.iChooseBad:
-            dataForSave.reprehensibility += 10;
+            addReprehensibility(10);
             await ƒS.Speech.tell(characters.jason, '"Ist es so verkehrt, wenn ich sie für meine eigenen Zwecke benutze?"');
             break;
         }
@@ -418,7 +419,7 @@ namespace Template {
             await ƒS.Speech.tell(characters.jason, text.jason.T0020);
             break;
           case secondDialogueElementOptions.iChooseNo:
-            dataForSave.reprehensibility += 10;
+            addReprehensibility(10);
             await ƒS.Speech.tell(characters.jason, text.jason.T0017);
             await ƒS.Speech.tell('Dozentin', text.dozentin.T0003);
 
@@ -433,6 +434,7 @@ namespace Template {
             await ƒS.Speech.tell(characters.jason, text.jason.T0020);
             break;
           case secondDialogueElementOptions.iChooseWish:
+            addReprehensibility(5);
             await ƒS.Speech.tell(characters.jason, text.jason.T0018);
             await ƒS.Speech.tell('Dozentin', text.dozentin.T0004);
             await ƒS.Speech.tell(characters.jason, text.jason.T0021);
@@ -497,14 +499,14 @@ namespace Template {
           
         switch (thirdDialogueElement) {
           case thirdDialogueElementOptions.iChooseLearn:
-            dataForSave.reprehensibility -= 5;
+            removeReprehensibility(5);
             await ƒS.Speech.tell(characters.jason, text.jason.T0029);
             await ƒS.Character.hide(characters.jason);
             await ƒS.update();
             await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
             break;
           case thirdDialogueElementOptions.iChooseMagic:
-            dataForSave.reprehensibility += 5;
+            addReprehensibility(5);
             await ƒS.Speech.tell(characters.jason, text.jason.T0030);
             await ƒS.Character.hide(characters.jason);
             await ƒS.update();
