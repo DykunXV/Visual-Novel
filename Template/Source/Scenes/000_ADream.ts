@@ -53,6 +53,7 @@ namespace Template {
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0009);
       await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0010);
       await ƒS.Character.hide(characters.jasonsThoughts);
+      characters.jasonsThoughts.name = dataForSave.nameProtagonist + 's Gedanken'; //this is done so late because it would lead to the character not hiding properly
       await ƒS.update();
       ƒS.Sound.fade(audio.dreamTheme, 0, 1, true);
     }

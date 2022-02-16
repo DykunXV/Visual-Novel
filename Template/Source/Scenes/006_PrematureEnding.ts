@@ -4,11 +4,11 @@ namespace Template {
   
       let text = {
         narrator: {
-            T0000: 'Jason steht aus seinem Bett auf.',
-            T0001: 'Jasons Handy fängt an zu vibrieren.',
-            T0002: 'Jason ließt sich die Nachrichten im Gruppenchat durch.',
-            T0003: 'Jason und seine Freunde leben ihr Leben vorerst normal weiter.. doch was wird Jason mit seiner Kraft in der Zukunft tun? Mehr dazu wann anders.',
-            T0004: 'Jason ließt sich die Nachrichten im Gruppenchat durch.',
+            T0000: `${dataForSave.nameProtagonist} steht aus seinem Bett auf.`,
+            T0001: `${dataForSave.nameProtagonist}s Handy fängt an zu vibrieren.`,
+            T0002: `${dataForSave.nameProtagonist} ließt sich die Nachrichten im Gruppenchat durch.`,
+            T0003: `${dataForSave.nameProtagonist} und seine Freunde leben ihr Leben vorerst normal weiter.. doch was wird ${dataForSave.nameProtagonist} mit seiner Kraft in der Zukunft tun? Mehr dazu wann anders.`,
+            T0004: `${dataForSave.nameProtagonist} ließt sich die Nachrichten im Gruppenchat durch.`,
             T0005: 'Mit diesen Worten endet die Story vorerst.',
             T0006: 'Wird sich Alice an Thomas erinnern? Oder gibt es gewisse Konditionen, die für das Zaubern der Zauber erfüllt sein müssen? Mehr dazu wann anders.',
             T0007: 'Mit diesen Worten endet die Story vorerst.',
@@ -27,7 +27,7 @@ namespace Template {
           T0009: 'Ich wünschte mir, dass Thomas alles über Alic-',
           T0010: '..nein. Nein, das geht zu weit.',
           T0011: 'Das ist absolut abgefuckt, was ich hier gerade vor habe!',
-          T0012: 'Pack deine persönlichen Gefühle bei Seite, Jason und regel das mit deinem Gehirn!',
+          T0012: `Pack deine persönlichen Gefühle bei Seite, ${dataForSave.nameProtagonist} und regel das mit deinem Gehirn!`,
           T0013: 'Ich wünschte mir, dass Thomas alles über Alice vergisst.',
         },
       };
@@ -102,7 +102,7 @@ namespace Template {
               await ƒS.Speech.tell(characters.narrator, text.narrator.T0006);
               break;
             case firstDialogueElementOptions.iChooseBadWish:
-              if (dataForSave.reprehensibility <= 25) {
+              if (dataForSave.reprehensibility <= 20) {
                 await ƒS.Character.hide(characters.jason);
                 await ƒS.Character.show(
                   characters.jason,  

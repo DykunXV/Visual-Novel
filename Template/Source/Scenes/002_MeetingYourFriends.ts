@@ -5,11 +5,11 @@ namespace Template {
     let text = {
       narrator: {
         T0000:
-          'Alice und Jason sind schon seit ihrer Kindheit miteinander befreundet. Sie gingen in denselben Kindergarten, dieselben Schulen und studieren nun letztendlich miteinander zusammen an derselben Universität.',
+        `Alice und ${dataForSave.nameProtagonist} sind schon seit ihrer Kindheit miteinander befreundet. Sie gingen in denselben Kindergarten, dieselben Schulen und studieren nun letztendlich miteinander zusammen an derselben Universität.`,
         T0001:
-          'Jason hat schon immer etwas für Alice empfunden. Diese Beziehung ist jedoch nur einseitig.',
+        `${dataForSave.nameProtagonist} hat schon immer etwas für Alice empfunden. Diese Beziehung ist jedoch nur einseitig.`,
         T0002:
-          'Thomas und Jason sind ebenfalls seit ihrer Kindheit befreundet. Ebenso wie Alice, ging er in denselben Kindergarten, dieselben Schulen und bestreitet nun ebenfalls das Studium. Ähnlich wie Jason, empfindet Alice etwas für Thomas, weswegen eine Art freundliche Rivalität zwischen den beiden herrscht.',
+        `Thomas und ${dataForSave.nameProtagonist} sind ebenfalls seit ihrer Kindheit befreundet. Ebenso wie Alice, bestreitet er den gleichen Lebensweg. Ähnlich wie ${dataForSave.nameProtagonist}, empfindet Thomas etwas für Alice, weswegen eine Art freundliche Rivalität zwischen den beiden herrscht.`,
         T0003:
           'Nach einem langen und spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
       },
@@ -39,21 +39,21 @@ namespace Template {
       },
       alice: {
         T0000:
-          'Ach Jason, du Kleiner Casanova. Thomas ist gerade Eis für uns kaufen.',
+        `Ach ${dataForSave.nameProtagonist}, du kleiner Casanova. Thomas ist gerade Eis für uns kaufen.`,
         T0001: 'Uh, ich freue mich schon auf mein Waldmeister Eis.',
         T0002: 'JASON! Das ist mein Eis!',
-        T0003: 'Ja, Jason. Was ist los? Erzähl schon.',
+        T0003: `Ja, ${dataForSave.nameProtagonist}. Was ist los? Erzähl schon.`,
       },
       thomas: {
         T0000: 'Auf was wartest du denn? Schönes Wetter?',
         T0001:
-          'Bei mir doch immer, Jason. Aber weniger Reden und mehr Eis essen.',
+        `Bei mir doch immer, ${dataForSave.nameProtagonist}. Aber weniger Reden und mehr Eis essen.`,
         T0002: 'Und ich mich erst auf mein Kirsch Eis.',
         T0003:
-          'Letztes Mal hast du das Nuss-Nougat Eis genommen, deswegen habe ich dir einfach das gleiche geholt.',
-        T0004: 'Kein sonderliches Kavaliersdelikt, Jason.',
+        `Letztes Mal hast du das Nuss-Nougat Eis genommen, deswegen habe ich dir einfach das gleiche geholt.`,
+        T0004: `Kein sonderliches Kavaliersdelikt, ${dataForSave.nameProtagonist}.`,
         T0005:
-          'Jason? Ich weiß nicht, ob du mich falsch verstanden hast, aber das ist mein Eis.',
+        `${dataForSave.nameProtagonist}? Ich weiß nicht, ob du mich falsch verstanden hast, aber das ist mein Eis.`,
         T0006:
           'Oh, das wusste ich nicht. Ich hol dir einfach ein neues Eis. Welchen Geschmack hättest du gerne?',
         T0007:
@@ -62,7 +62,7 @@ namespace Template {
         T0009:
           'Huh, na gut, an sich ist es irgendwo meine Schuld, da ich dich auch einfach hätte fragen können.',
         T0010:
-          'Woah, Jason. Kein Grund gleich so wütend zu werden. Ist alles in Ordnung bei dir?',
+        `Woah, ${dataForSave.nameProtagonist}. Kein Grund gleich so wütend zu werden. Ist alles in Ordnung bei dir?`,
         T0011:
           'Dann geh heute etwas früher schlafen. Und hör auf mit den ganzen Energy Drinks vorm Schlafen!',
       },
@@ -112,18 +112,41 @@ namespace Template {
     await ƒS.update();
     await ƒS.Speech.tell(characters.alice, text.alice.T0000);
 
+    await ƒS.Character.hide(characters.jason);
+    await ƒS.Character.show(
+      characters.jason,  
+      characters.jason.pose.thinking,
+      ƒS.positionPercent(25, 100)
+    );
+    await ƒS.update();
     await ƒS.Speech.tell(characters.jason, text.jason.T0003);
 
     await ƒS.Character.show(
       characters.thomas,  
       characters.thomas.pose.neutral,
+      ƒS.positionPercent(150, 100)
+    );
+    await ƒS.update();
+    await ƒS.Character.animate(characters.thomas, characters.thomas.pose.neutral, fromOutOfCanvasToMid());
+    await ƒS.Speech.tell(characters.thomas, text.thomas.T0000);
+
+    await ƒS.Character.hide(characters.jason);
+    await ƒS.Character.show(
+      characters.jason,  
+      characters.jason.pose.neutral,
+      ƒS.positionPercent(25, 100)
+    );
+    await ƒS.update();
+    await ƒS.Speech.tell(characters.jason, text.jason.T0004);
+    await ƒS.Speech.tell(characters.narrator, text.narrator.T0002);
+
+    await ƒS.Character.hide(characters.thomas);
+    await ƒS.Character.show(
+      characters.thomas,  
+      characters.thomas.pose.neutral2,
       ƒS.positionPercent(50, 100)
     );
     await ƒS.update();
-    await ƒS.Speech.tell(characters.thomas, text.thomas.T0000);
-
-    await ƒS.Speech.tell(characters.jason, text.jason.T0004);
-    await ƒS.Speech.tell(characters.narrator, text.narrator.T0002);
     await ƒS.Speech.tell(characters.thomas, text.thomas.T0001);
 
     await ƒS.Character.hide(characters.alice);
@@ -138,7 +161,7 @@ namespace Template {
     await ƒS.Character.hide(characters.thomas);
     await ƒS.Character.show(
       characters.thomas,  
-      characters.thomas.pose.neutral2,
+      characters.thomas.pose.thinking,
       ƒS.positionPercent(50, 100)
     );
     await ƒS.update();
@@ -153,6 +176,13 @@ namespace Template {
     await ƒS.update();
     await ƒS.Speech.tell(characters.jason, text.jason.T0005);
 
+    await ƒS.Character.hide(characters.thomas);
+    await ƒS.Character.show(
+      characters.thomas,  
+      characters.thomas.pose.neutral,
+      ƒS.positionPercent(50, 100)
+    );
+    await ƒS.update();
     await ƒS.Speech.tell(characters.thomas, text.thomas.T0003);
 
     await ƒS.Character.hide(characters.jason);
@@ -230,7 +260,22 @@ namespace Template {
         await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0006);
 
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.neutral2,
+          ƒS.positionPercent(25, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0008);
+
+        await ƒS.Character.hide(characters.thomas);
+        await ƒS.Character.show(
+          characters.thomas,  
+          characters.thomas.pose.neutral,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0008);
 
         await ƒS.Character.hide(characters.thomas);
@@ -278,9 +323,40 @@ namespace Template {
         await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0009);
 
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.neutral2,
+          ƒS.positionPercent(25, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0010);
+
+        await ƒS.Character.hide(characters.thomas);
+        await ƒS.Character.show(
+          characters.thomas,  
+          characters.thomas.pose.neutral2,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0007);
+
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.neutral,
+          ƒS.positionPercent(25, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0011);
+
+        await ƒS.Character.hide(characters.thomas);
+        await ƒS.Character.show(
+          characters.thomas,  
+          characters.thomas.pose.neutral,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0008);
 
         await ƒS.Character.hide(characters.thomas);
@@ -334,7 +410,22 @@ namespace Template {
         await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0013);
 
+        await ƒS.Character.hide(characters.thomas);
+        await ƒS.Character.show(
+          characters.thomas,  
+          characters.thomas.pose.neutral2,
+          ƒS.positionPercent(50, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.thomas, text.thomas.T0011);
+
+        await ƒS.Character.hide(characters.jason);
+        await ƒS.Character.show(
+          characters.jason,  
+          characters.jason.pose.disappointed,
+          ƒS.positionPercent(25, 100)
+        );
+        await ƒS.update();
         await ƒS.Speech.tell(characters.jason, text.jason.T0014);
 
         await ƒS.Character.hide(characters.thomas);

@@ -138,18 +138,30 @@ var Template;
         };
     }
     Template.fromMidToLeft = fromMidToLeft;
+    function fromOutOfCanvasToMid() {
+        return {
+            start: { translation: Template.ƒS.positionPercent(150, 100) },
+            end: { translation: Template.ƒS.positionPercent(50, 100) },
+            duration: 1,
+            playmode: Template.ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+        };
+    }
+    Template.fromOutOfCanvasToMid = fromOutOfCanvasToMid;
     //define data that will be saved
     Template.dataForSave = {
-        nameProtagonist: 'TEST123',
+        nameProtagonist: 'Jason',
         reprehensibility: 0,
-        firstSpellSpoken: false,
+        firstSpellSpoken: true,
         secondSpellSpoken: false,
         thirdSpellSpoken: false,
     };
     //add custom class
     function showCredits() {
         Template.ƒS.Text.addClass("credits");
-        Template.ƒS.Text.print("Hier könnten jetzt Credits stehen.");
+        Template.ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
+    Kevin MacLeod (incompetech.com)
+    Licensed under Creative Commons: By Attribution 3.0
+    http://creativecommons.org/licenses/by/3.0/`);
         // showCredits();
     }
     Template.showCredits = showCredits;
@@ -215,10 +227,10 @@ var Template;
         gameMenu = Template.ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
         buttonFunctionalities("Close");
         let scenes = [
-            { id: '000', scene: Template.ADream, name: 'Ein Traum', next: '001' },
-            { id: '001', scene: Template.MyIntroduction, name: 'Einführung', next: '002' },
-            { id: '002', scene: Template.MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
-            { id: '003', scene: Template.AWish, name: 'Ein Wunsch', next: '004' },
+            //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+            //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
+            //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+            //{ id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
             { id: '004', scene: Template.ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
             { id: '005', scene: Template.Together, name: 'Zweisamkeit', next: '006' },
             { id: '006', scene: Template.PrematureEnding, name: 'Vorzeitiges Ende', next: '007' },
@@ -270,6 +282,7 @@ var Template;
         await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0009);
         await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0010);
         await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+        Template.characters.jasonsThoughts.name = Template.dataForSave.nameProtagonist + 's Gedanken'; //this is done so late because it would lead to the character not hiding properly
         await Template.ƒS.update();
         Template.ƒS.Sound.fade(Template.audio.dreamTheme, 0, 1, true);
     }
@@ -412,9 +425,9 @@ var Template;
         console.log('Scene 002_MeetingYourFriends starting');
         let text = {
             narrator: {
-                T0000: 'Alice und Jason sind schon seit ihrer Kindheit miteinander befreundet. Sie gingen in denselben Kindergarten, dieselben Schulen und studieren nun letztendlich miteinander zusammen an derselben Universität.',
-                T0001: 'Jason hat schon immer etwas für Alice empfunden. Diese Beziehung ist jedoch nur einseitig.',
-                T0002: 'Thomas und Jason sind ebenfalls seit ihrer Kindheit befreundet. Ebenso wie Alice, ging er in denselben Kindergarten, dieselben Schulen und bestreitet nun ebenfalls das Studium. Ähnlich wie Jason, empfindet Alice etwas für Thomas, weswegen eine Art freundliche Rivalität zwischen den beiden herrscht.',
+                T0000: `Alice und ${Template.dataForSave.nameProtagonist} sind schon seit ihrer Kindheit miteinander befreundet. Sie gingen in denselben Kindergarten, dieselben Schulen und studieren nun letztendlich miteinander zusammen an derselben Universität.`,
+                T0001: `${Template.dataForSave.nameProtagonist} hat schon immer etwas für Alice empfunden. Diese Beziehung ist jedoch nur einseitig.`,
+                T0002: `Thomas und ${Template.dataForSave.nameProtagonist} sind ebenfalls seit ihrer Kindheit befreundet. Ebenso wie Alice, bestreitet er den gleichen Lebensweg. Ähnlich wie ${Template.dataForSave.nameProtagonist}, empfindet Thomas etwas für Alice, weswegen eine Art freundliche Rivalität zwischen den beiden herrscht.`,
                 T0003: 'Nach einem langen und spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
             },
             jason: {
@@ -435,23 +448,23 @@ var Template;
                 T0014: '*Genau den gleichen Gedanken hatte ich heute auch*',
             },
             alice: {
-                T0000: 'Ach Jason, du Kleiner Casanova. Thomas ist gerade Eis für uns kaufen.',
+                T0000: `Ach ${Template.dataForSave.nameProtagonist}, du kleiner Casanova. Thomas ist gerade Eis für uns kaufen.`,
                 T0001: 'Uh, ich freue mich schon auf mein Waldmeister Eis.',
                 T0002: 'JASON! Das ist mein Eis!',
-                T0003: 'Ja, Jason. Was ist los? Erzähl schon.',
+                T0003: `Ja, ${Template.dataForSave.nameProtagonist}. Was ist los? Erzähl schon.`,
             },
             thomas: {
                 T0000: 'Auf was wartest du denn? Schönes Wetter?',
-                T0001: 'Bei mir doch immer, Jason. Aber weniger Reden und mehr Eis essen.',
+                T0001: `Bei mir doch immer, ${Template.dataForSave.nameProtagonist}. Aber weniger Reden und mehr Eis essen.`,
                 T0002: 'Und ich mich erst auf mein Kirsch Eis.',
-                T0003: 'Letztes Mal hast du das Nuss-Nougat Eis genommen, deswegen habe ich dir einfach das gleiche geholt.',
-                T0004: 'Kein sonderliches Kavaliersdelikt, Jason.',
-                T0005: 'Jason? Ich weiß nicht, ob du mich falsch verstanden hast, aber das ist mein Eis.',
+                T0003: `Letztes Mal hast du das Nuss-Nougat Eis genommen, deswegen habe ich dir einfach das gleiche geholt.`,
+                T0004: `Kein sonderliches Kavaliersdelikt, ${Template.dataForSave.nameProtagonist}.`,
+                T0005: `${Template.dataForSave.nameProtagonist}? Ich weiß nicht, ob du mich falsch verstanden hast, aber das ist mein Eis.`,
                 T0006: 'Oh, das wusste ich nicht. Ich hol dir einfach ein neues Eis. Welchen Geschmack hättest du gerne?',
                 T0007: 'Ich hol dir einfach ein neues Eis. Welchen Geschmack hättest du denn gerne?',
                 T0008: 'Auf dem Weg, der Herr.',
                 T0009: 'Huh, na gut, an sich ist es irgendwo meine Schuld, da ich dich auch einfach hätte fragen können.',
-                T0010: 'Woah, Jason. Kein Grund gleich so wütend zu werden. Ist alles in Ordnung bei dir?',
+                T0010: `Woah, ${Template.dataForSave.nameProtagonist}. Kein Grund gleich so wütend zu werden. Ist alles in Ordnung bei dir?`,
                 T0011: 'Dann geh heute etwas früher schlafen. Und hör auf mit den ganzen Energy Drinks vorm Schlafen!',
             },
         };
@@ -473,25 +486,38 @@ var Template;
         await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral2, Template.ƒS.positionPercent(75, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0000);
-        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0003);
-        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
         await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0003);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(150, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Character.animate(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.fromOutOfCanvasToMid());
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0000);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0004);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0002);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0001);
         await Template.ƒS.Character.hide(Template.characters.alice);
         await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.happy, Template.ƒS.positionPercent(75, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0001);
         await Template.ƒS.Character.hide(Template.characters.thomas);
-        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0002);
         await Template.ƒS.Character.hide(Template.characters.jason);
         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0005);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0003);
         await Template.ƒS.Character.hide(Template.characters.jason);
         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
@@ -531,7 +557,13 @@ var Template;
                 await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0006);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0008);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0008);
                 await Template.ƒS.Character.hide(Template.characters.thomas);
                 await Template.ƒS.Character.hide(Template.characters.alice);
@@ -558,9 +590,21 @@ var Template;
                 await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0009);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0010);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0007);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0011);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0008);
                 await Template.ƒS.Character.hide(Template.characters.thomas);
                 await Template.ƒS.Character.hide(Template.characters.alice);
@@ -590,7 +634,13 @@ var Template;
                 await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0013);
+                await Template.ƒS.Character.hide(Template.characters.thomas);
+                await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0011);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0014);
                 await Template.ƒS.Character.hide(Template.characters.thomas);
                 await Template.ƒS.Character.hide(Template.characters.alice);
@@ -611,13 +661,13 @@ var Template;
         console.log('Scene 003_AWish starting');
         let text = {
             narrator: {
-                T0000: 'Jason steht aus dem Bett auf.',
-                T0001: 'Jason liest die Nachrichten im Gruppenchat. Dort berichten seine Freunde Alice und Thomas, dass sie auf einmal ihre Fähigkeit zu Sprechen verloren haben.',
-                T0002: 'Jasons Handy fängt an zu vibrieren.',
-                T0003: 'Jason ließt die neuen Nachrichten, in denen steht, dass beide seine Freunde wieder sprechen können.',
-                T0004: 'Mit diesen Worten macht sich Jason auf zum Skatepark.',
-                T0005: 'Die Jungs fangen an zu skaten, während Alice begeistert zuschaut. Nach einer Weile, stürzt Jason von seinem Brett.',
-                T0006: 'Nach einem langen und, zumindest für Alice, spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
+                T0000: `${Template.dataForSave.nameProtagonist} steht aus dem Bett auf.`,
+                T0001: `${Template.dataForSave.nameProtagonist} liest die Nachrichten im Gruppenchat. Dort berichten seine Freunde Alice und Thomas, dass sie auf einmal ihre Fähigkeit zu Sprechen verloren haben.`,
+                T0002: `${Template.dataForSave.nameProtagonist}s Handy fängt an zu vibrieren.`,
+                T0003: `${Template.dataForSave.nameProtagonist} ließt die neuen Nachrichten, in denen steht, dass beide seine Freunde wieder sprechen können.`,
+                T0004: `Mit diesen Worten macht sich ${Template.dataForSave.nameProtagonist} auf zum Skatepark.`,
+                T0005: `Die Jungs fangen an zu skaten, während Alice begeistert zuschaut. Nach einer Weile, stürzt ${Template.dataForSave.nameProtagonist} von seinem Brett.`,
+                T0006: 'Nach einem langen und zumindest für Alice, spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
             },
             jason: {
                 T0000: '*Aufsteh Geräusche*',
@@ -653,16 +703,16 @@ var Template;
             alice: {
                 T0000: 'Ja, gerne. Aber was genau wollen wir machen?',
                 T0001: 'Dann steht das jetzt fest! Bis in einer Stunde!',
-                T0002: 'Hey, Jason. Mach dir kein Kopf. Wir sind auch noch nicht lange da.',
+                T0002: `Hey, ${Template.dataForSave.nameProtagonist}. Mach dir kein Kopf. Wir sind auch noch nicht lange da.`,
                 T0003: 'Wollt ihr heute noch skaten, oder euch nur weiterhin fertig machen?',
-                T0004: 'Lass dich mal anschauen, Jason.',
-                T0005: 'Wisst ihr was, vergisst es. Thomas, ich überlasse dir die ehrenvolle Aufgabe Jasons Arsch anzuschauen.',
+                T0004: `Lass dich mal anschauen, ${Template.dataForSave.nameProtagonist}.`,
+                T0005: `Wisst ihr was, vergisst es. Thomas, ich überlasse dir die ehrenvolle Aufgabe ${Template.dataForSave.nameProtagonist}s Arsch anzuschauen.`,
             },
             thomas: {
                 T0000: 'Dasselbe gilt für mich. Wie wäre es, wenn wir uns in einer Stunde im Skatepark treffen würden?',
                 T0001: 'Kein Grund gleich gemein zu werden. Hast du etwa bessere Ideen?',
                 T0002: 'Verstehe.',
-                T0003: 'Hi, Jason.',
+                T0003: `Hi, ${Template.dataForSave.nameProtagonist}.`,
                 T0004: 'Richtig.',
                 T0005: 'Rich- Hey, moment Mal. Wer hat sich denn letztes Mal den Knöchel verstaucht?',
                 T0006: 'Wie war das noch gleich? Ich werde heute auf die Fresse fliegen?',
@@ -773,19 +823,37 @@ var Template;
         await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral2, Template.ƒS.positionPercent(75, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0002);
-        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0019);
         await Template.ƒS.Character.hide(Template.characters.jason);
         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
         await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0019);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0020);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0021);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0022);
-        await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
-        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0023);
         await Template.ƒS.Character.hide(Template.characters.thomas);
         await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0004);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0023);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0005);
         await Template.ƒS.Character.hide(Template.characters.jason);
@@ -796,10 +864,15 @@ var Template;
         await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.neutral, Template.ƒS.positionPercent(75, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.alice, text.alice.T0003);
-        await Template.ƒS.Speech.tell('Thomas und Jason', text.thomasAndJason.T0000);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.hide(Template.characters.thomas);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.update();
+        await Template.ƒS.Speech.tell(`Thomas und ${Template.dataForSave.nameProtagonist}`, text.thomasAndJason.T0000);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0005);
         await Template.ƒS.Character.hide(Template.characters.thomas);
-        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
+        await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.neutral2, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0006);
         let secondDialogueElementOptions = {
@@ -808,7 +881,7 @@ var Template;
         };
         let secondDialogueElement = await Template.ƒS.Menu.getInput(secondDialogueElementOptions, 'player-choice');
         await Template.ƒS.Character.hide(Template.characters.jason);
-        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.disappointed, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
         await Template.ƒS.update();
         switch (secondDialogueElement) {
             case secondDialogueElementOptions.iChooseOuch:
@@ -823,6 +896,9 @@ var Template;
         await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.thinking, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.thomas, text.thomas.T0007);
+        await Template.ƒS.Character.hide(Template.characters.jason);
+        await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+        await Template.ƒS.update();
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0027);
         await Template.ƒS.Character.hide(Template.characters.alice);
         await Template.ƒS.Character.show(Template.characters.alice, Template.characters.alice.pose.happy, Template.ƒS.positionPercent(75, 100));
@@ -845,7 +921,7 @@ var Template;
         await Template.ƒS.Character.hide(Template.characters.thomas);
         await Template.ƒS.Character.show(Template.characters.thomas, Template.characters.thomas.pose.questioning, Template.ƒS.positionPercent(50, 100));
         await Template.ƒS.update();
-        await Template.ƒS.Speech.tell('Thomas und Jason', text.thomasAndJason.T0001);
+        await Template.ƒS.Speech.tell(`Thomas und ${Template.dataForSave.nameProtagonist}`, text.thomasAndJason.T0001);
         await Template.ƒS.Character.hide(Template.characters.thomas);
         await Template.ƒS.Character.hide(Template.characters.alice);
         await Template.ƒS.Character.hide(Template.characters.jason);
@@ -863,13 +939,13 @@ var Template;
         console.log('Scene 004_ANewAwakening starting');
         let text = {
             narrator: {
-                T0000: 'Ohne zu Wissen, wie er seine magische Begabung benutzt, wandert Jason planlos durch sein Leben. Er studiert fertig, fängt mit dem Arbeiten an, heiratet, gründet eine Familie und stirbt eines Tages einen natürlichen Tod.',
-                T0001: 'Jason wacht aus seinem Traum auf.',
-                T0002: 'Jason macht sich auf den Weg zur Uni. Dort angekommen, trifft er auf seine Freunde.',
+                T0000: `Ohne zu Wissen, wie er seine magische Begabung benutzt, wandert ${Template.dataForSave.nameProtagonist} planlos durch sein Leben. Er studiert fertig, fängt mit dem Arbeiten an, heiratet, gründet eine Familie und stirbt eines Tages einen natürlichen Tod.`,
+                T0001: `${Template.dataForSave.nameProtagonist} wacht aus seinem Traum auf.`,
+                T0002: `${Template.dataForSave.nameProtagonist} macht sich auf den Weg zur Uni. Dort angekommen, trifft er auf seine Freunde.`,
                 T0003: 'Die Glocke der Universität fängt an zu läuten.',
-                T0004: 'Jason und die anderen begeben sich in den entsprechenden Raum, um dort ihren Test zu schreiben. Jason ist der letzte, der fertig ist. Die Dozentin kommt auf ihn zu, um den Test einzusammeln.',
-                T0005: 'Jason verbringt den Rest des Tages damit zu lernen.',
-                T0006: 'Jason verbringt den Rest des Tages damit Videospiele zu spielen.',
+                T0004: `${Template.dataForSave.nameProtagonist} und die anderen begeben sich in den entsprechenden Raum, um dort ihren Test zu schreiben. ${Template.dataForSave.nameProtagonist} ist der letzte, der fertig ist. Die Dozentin kommt auf ihn zu, um den Test einzusammeln.`,
+                T0005: `${Template.dataForSave.nameProtagonist} verbringt den Rest des Tages damit zu lernen.`,
+                T0006: `${Template.dataForSave.nameProtagonist} verbringt den Rest des Tages damit Videospiele zu spielen.`,
             },
             jason: {
                 T0000: '*Aufsteh Geräusche*',
@@ -895,7 +971,7 @@ var Template;
                 T0020: '*Ich bin der letzte der mit dem Test fertig wurde. Das heißt alle anderen sind schon weg. Zeit nachhause zu gehen.*',
                 T0021: 'Äh, ja, entschuldigen Sie.',
                 T0022: '*Scheiß, scheiße, scheiße, habe ich das gerade wirklich getan? Habe ich gerade wirklich meine Dozentin manipuliert, nur, damit ich eine gute Note bekomme?*',
-                T0023: '*Ganz ruhig bleiben Jason. Vielleicht hättest du auch so die beste Note bekommen.*',
+                T0023: `*Ganz ruhig bleiben ${Template.dataForSave.nameProtagonist}. Vielleicht hättest du auch so die beste Note bekommen.*`,
                 T0024: '*Nein, definitiv nicht. Die ganze vierte Aufgabe habe ich tierisch vergeigt.*',
                 T0025: '*Verdammt. Naja, was getan ist, ist getan. Mir den Kopf darüber zu zerbrechen hilft mir jetzt auch nicht*',
                 T0026: '*Ich bin der letzte der mit dem Test fertig wurde. Das heißt alle anderen sind schon weg. Zeit nachhause zu gehen.*',
@@ -905,16 +981,16 @@ var Template;
                 T0030: 'Wieso lernen, wenn ich mich durch meine Probleme zaubern kann?',
             },
             alice: {
-                T0000: 'Hey Jason.',
+                T0000: `Hey ${Template.dataForSave.nameProtagonist}.`,
                 T0001: 'Thomas..',
-                T0002: 'Jason!',
+                T0002: `${Template.dataForSave.nameProtagonist}!`,
                 T0003: 'Meint er uns, Thomas?',
                 T0004: 'Ja, gerade fertig geworden.',
             },
             thomas: {
                 T0000: 'Hey hey.',
                 T0001: 'Nenn mir bitte einen Grund, einen einzigen Grund, warum mich dein Arsch jemals interessieren sollte.',
-                T0002: 'Ich gebe mein bestes.',
+                T0002: 'Ich gebe mein Bestes.',
                 T0003: 'Na, wie geht es deinem Wunderarsch?',
                 T0004: 'Wieso lernen, wenn man auch nicht lernen kann?',
                 T0005: 'Er meint uns, Alice.',
@@ -1183,10 +1259,10 @@ var Template;
         let text = {
             narrator: {
                 T0000: 'Der Rest der Woche vergeht recht unspektakulär. Uni, Lernen, Schlafen, um es genauer zu beschreiben.',
-                T0001: 'Jason steht aus seinem Bett auf.',
-                T0002: 'Jason macht sich bereit für das Treffen und kommt dann vor der Bowlinghalle an.',
-                T0003: 'Jason und Alice verbringen die nächsten Stunden voller Spaß auf der Bowlingbahn.',
-                T0004: 'Jason macht einen Salto und fällt dabei um.',
+                T0001: `${Template.dataForSave.nameProtagonist} steht aus seinem Bett auf.`,
+                T0002: `${Template.dataForSave.nameProtagonist} macht sich bereit für das Treffen und kommt dann vor der Bowlinghalle an.`,
+                T0003: `${Template.dataForSave.nameProtagonist} und Alice verbringen die nächsten Stunden voller Spaß auf der Bowlingbahn.`,
+                T0004: `${Template.dataForSave.nameProtagonist} macht einen Salto und fällt dabei um.`,
                 T0005: 'Nach einem langem Gelächter, verabschieden sich die beiden und begeben sich zu Bett.',
                 T0006: 'Nach einem langen Tag, verabschieden sich die beiden und begeben sich zu Bett.',
             },
@@ -1215,10 +1291,10 @@ var Template;
                 T0021: '*Ich denke dafür ist es zu spät..*',
             },
             alice: {
-                T0000: 'Ah, hallo Jason.',
+                T0000: `Ah, hallo ${Template.dataForSave.nameProtagonist}.`,
                 T0001: 'Thomas liegt leider krank im Bett. Er wird es heute nicht schaffen. Es sind also nur wir zwei.',
                 T0002: 'Ja, genau das habe ich gerade gesagt.',
-                T0003: 'Jason?',
+                T0003: `${Template.dataForSave.nameProtagonist}?`,
                 T0004: 'Liebend gerne.',
                 T0005: 'Du hattest wohl sehr viel Glück heute, nicht wahr? Thomas hätte uns aber beide zusammen platt gemacht.',
                 T0006: 'Gibt es ein Spiel, in dem Thomas uns eigentlich nicht überlegen ist?',
@@ -1226,8 +1302,8 @@ var Template;
                 T0008: 'Also Thomas hätte den Salto wahrscheinlich gemacht, ohne umzufallen, haha',
                 T0009: 'Entschuldige, ich hab dich nicht ganz verstanden. Was wünscht du dir?',
                 T0010: 'Da bin ich aber gespannt.',
-                T0011: 'Jason, du weißt, dass du deine eigenen Fähigkeiten hast, in denen du Thomas und auch mir bei weitem überlegen bist.',
-                T0012: 'Mach dir kein Kopf, Jason.',
+                T0011: `${Template.dataForSave.nameProtagonist}, du weißt, dass du deine eigenen Fähigkeiten hast, in denen du Thomas und auch mir bei weitem überlegen bist.`,
+                T0012: `Mach dir kein Kopf, ${Template.dataForSave.nameProtagonist}.`,
             }
         };
         await Template.ƒS.Location.show(Template.locations.bedroom);
@@ -1425,11 +1501,11 @@ var Template;
         console.log('Scene 006_PrematureEnding starting');
         let text = {
             narrator: {
-                T0000: 'Jason steht aus seinem Bett auf.',
-                T0001: 'Jasons Handy fängt an zu vibrieren.',
-                T0002: 'Jason ließt sich die Nachrichten im Gruppenchat durch.',
-                T0003: 'Jason und seine Freunde leben ihr Leben vorerst normal weiter.. doch was wird Jason mit seiner Kraft in der Zukunft tun? Mehr dazu wann anders.',
-                T0004: 'Jason ließt sich die Nachrichten im Gruppenchat durch.',
+                T0000: `${Template.dataForSave.nameProtagonist} steht aus seinem Bett auf.`,
+                T0001: `${Template.dataForSave.nameProtagonist}s Handy fängt an zu vibrieren.`,
+                T0002: `${Template.dataForSave.nameProtagonist} ließt sich die Nachrichten im Gruppenchat durch.`,
+                T0003: `${Template.dataForSave.nameProtagonist} und seine Freunde leben ihr Leben vorerst normal weiter.. doch was wird ${Template.dataForSave.nameProtagonist} mit seiner Kraft in der Zukunft tun? Mehr dazu wann anders.`,
+                T0004: `${Template.dataForSave.nameProtagonist} ließt sich die Nachrichten im Gruppenchat durch.`,
                 T0005: 'Mit diesen Worten endet die Story vorerst.',
                 T0006: 'Wird sich Alice an Thomas erinnern? Oder gibt es gewisse Konditionen, die für das Zaubern der Zauber erfüllt sein müssen? Mehr dazu wann anders.',
                 T0007: 'Mit diesen Worten endet die Story vorerst.',
@@ -1448,7 +1524,7 @@ var Template;
                 T0009: 'Ich wünschte mir, dass Thomas alles über Alic-',
                 T0010: '..nein. Nein, das geht zu weit.',
                 T0011: 'Das ist absolut abgefuckt, was ich hier gerade vor habe!',
-                T0012: 'Pack deine persönlichen Gefühle bei Seite, Jason und regel das mit deinem Gehirn!',
+                T0012: `Pack deine persönlichen Gefühle bei Seite, ${Template.dataForSave.nameProtagonist} und regel das mit deinem Gehirn!`,
                 T0013: 'Ich wünschte mir, dass Thomas alles über Alice vergisst.',
             },
         };
@@ -1494,7 +1570,7 @@ var Template;
                     await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0006);
                     break;
                 case firstDialogueElementOptions.iChooseBadWish:
-                    if (Template.dataForSave.reprehensibility <= 25) {
+                    if (Template.dataForSave.reprehensibility <= 20) {
                         await Template.ƒS.Character.hide(Template.characters.jason);
                         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(50, 100));
                         await Template.ƒS.update();
@@ -1538,14 +1614,18 @@ var Template;
                 T0001: 'Insgesamt gibt es drei Endings. Hast du sie alle gefunden?',
                 T0002: 'Hier ein paar Tipps zu den verschiedenen Endings.',
                 T0003: 'Ending 1 findest du, wenn du nach dem Skatepark keinen einzigen Zauber gesprochen hast.',
-                T0004: 'Ending 2 findest du, wenn dir deine Freunde wichtiger sind, als deine Persönlichen Gefühle.',
+                T0004: 'Ending 2 findest du, wenn dir deine Freunde wichtiger sind, als deine persönlichen Gefühle.',
                 T0005: 'Ending 3 findest du, wenn du dich und deine Bedürfnisse immer über alles andere stellst.',
                 T0006: 'Viel Spaß dabei die restlichen Endings zu finden!',
+                T0007: 'Die Credits werden jetzt eingeblendet! Alles was nicht genannt wurde, benötigt entweder keine Nennung, oder wurde von mir erstellt.',
+                T0008: 'Lade jetzt die Seite neu, um von vorne zu beginnen!'
             }
         };
+        Template.ƒS.Sound.fade(Template.audio.bedroomTheme, 0, 1, true);
+        Template.ƒS.Sound.play(Template.audio.dreamTheme, 1, true);
         await Template.ƒS.Location.show(Template.locations.dream);
         await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(50, 100));
-        await Template.ƒS.update();
+        await Template.ƒS.update(Template.transition.waves.duration, Template.transition.waves.alpha, Template.transition.waves.edge);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0000);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0001);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0002);
@@ -1553,6 +1633,8 @@ var Template;
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0004);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0005);
         await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0006);
+        await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0007);
+        Template.showCredits();
     }
     Template.Credits = Credits;
 })(Template || (Template = {}));

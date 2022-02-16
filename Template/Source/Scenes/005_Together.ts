@@ -5,10 +5,10 @@ namespace Template {
       let text = {
         narrator: {
           T0000: 'Der Rest der Woche vergeht recht unspektakulär. Uni, Lernen, Schlafen, um es genauer zu beschreiben.',
-          T0001: 'Jason steht aus seinem Bett auf.',
-          T0002: 'Jason macht sich bereit für das Treffen und kommt dann vor der Bowlinghalle an.',
-          T0003: 'Jason und Alice verbringen die nächsten Stunden voller Spaß auf der Bowlingbahn.',
-          T0004: 'Jason macht einen Salto und fällt dabei um.',
+          T0001: `${dataForSave.nameProtagonist} steht aus seinem Bett auf.`,
+          T0002: `${dataForSave.nameProtagonist} macht sich bereit für das Treffen und kommt dann vor der Bowlinghalle an.`,
+          T0003: `${dataForSave.nameProtagonist} und Alice verbringen die nächsten Stunden voller Spaß auf der Bowlingbahn.`,
+          T0004: `${dataForSave.nameProtagonist} macht einen Salto und fällt dabei um.`,
           T0005: 'Nach einem langem Gelächter, verabschieden sich die beiden und begeben sich zu Bett.',
           T0006: 'Nach einem langen Tag, verabschieden sich die beiden und begeben sich zu Bett.',
         },
@@ -37,10 +37,10 @@ namespace Template {
             T0021: '*Ich denke dafür ist es zu spät..*',
         },
         alice: {
-            T0000: 'Ah, hallo Jason.',
+            T0000: `Ah, hallo ${dataForSave.nameProtagonist}.`,
             T0001: 'Thomas liegt leider krank im Bett. Er wird es heute nicht schaffen. Es sind also nur wir zwei.',
             T0002: 'Ja, genau das habe ich gerade gesagt.',
-            T0003: 'Jason?',
+            T0003: `${dataForSave.nameProtagonist}?`,
             T0004: 'Liebend gerne.',
             T0005: 'Du hattest wohl sehr viel Glück heute, nicht wahr? Thomas hätte uns aber beide zusammen platt gemacht.',
             T0006: 'Gibt es ein Spiel, in dem Thomas uns eigentlich nicht überlegen ist?',
@@ -48,8 +48,8 @@ namespace Template {
             T0008: 'Also Thomas hätte den Salto wahrscheinlich gemacht, ohne umzufallen, haha',
             T0009: 'Entschuldige, ich hab dich nicht ganz verstanden. Was wünscht du dir?',
             T0010: 'Da bin ich aber gespannt.',
-            T0011: 'Jason, du weißt, dass du deine eigenen Fähigkeiten hast, in denen du Thomas und auch mir bei weitem überlegen bist.',
-            T0012: 'Mach dir kein Kopf, Jason.',
+            T0011: `${dataForSave.nameProtagonist}, du weißt, dass du deine eigenen Fähigkeiten hast, in denen du Thomas und auch mir bei weitem überlegen bist.`,
+            T0012: `Mach dir kein Kopf, ${dataForSave.nameProtagonist}.`,
         }
       };
 

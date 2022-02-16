@@ -5,13 +5,13 @@ namespace Template {
       let text = {
         
         narrator: {
-            T0000: 'Jason steht aus dem Bett auf.',
-            T0001: 'Jason liest die Nachrichten im Gruppenchat. Dort berichten seine Freunde Alice und Thomas, dass sie auf einmal ihre Fähigkeit zu Sprechen verloren haben.',
-            T0002: 'Jasons Handy fängt an zu vibrieren.',
-            T0003: 'Jason ließt die neuen Nachrichten, in denen steht, dass beide seine Freunde wieder sprechen können.',
-            T0004: 'Mit diesen Worten macht sich Jason auf zum Skatepark.',
-            T0005: 'Die Jungs fangen an zu skaten, während Alice begeistert zuschaut. Nach einer Weile, stürzt Jason von seinem Brett.',
-            T0006: 'Nach einem langen und, zumindest für Alice, spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
+            T0000: `${dataForSave.nameProtagonist} steht aus dem Bett auf.`,
+            T0001: `${dataForSave.nameProtagonist} liest die Nachrichten im Gruppenchat. Dort berichten seine Freunde Alice und Thomas, dass sie auf einmal ihre Fähigkeit zu Sprechen verloren haben.`,
+            T0002: `${dataForSave.nameProtagonist}s Handy fängt an zu vibrieren.`,
+            T0003: `${dataForSave.nameProtagonist} ließt die neuen Nachrichten, in denen steht, dass beide seine Freunde wieder sprechen können.`,
+            T0004: `Mit diesen Worten macht sich ${dataForSave.nameProtagonist} auf zum Skatepark.`,
+            T0005: `Die Jungs fangen an zu skaten, während Alice begeistert zuschaut. Nach einer Weile, stürzt ${dataForSave.nameProtagonist} von seinem Brett.`,
+            T0006: 'Nach einem langen und zumindest für Alice, spaßigen Tag zusammen, gehen die Freunde wieder getrennte Wege und legen sich alle ins Bett.',
         },
         jason: {
             T0000: '*Aufsteh Geräusche*',
@@ -47,16 +47,16 @@ namespace Template {
         alice: {
             T0000: 'Ja, gerne. Aber was genau wollen wir machen?',
             T0001: 'Dann steht das jetzt fest! Bis in einer Stunde!',
-            T0002: 'Hey, Jason. Mach dir kein Kopf. Wir sind auch noch nicht lange da.',
+            T0002: `Hey, ${dataForSave.nameProtagonist}. Mach dir kein Kopf. Wir sind auch noch nicht lange da.`,
             T0003: 'Wollt ihr heute noch skaten, oder euch nur weiterhin fertig machen?',
-            T0004: 'Lass dich mal anschauen, Jason.',
-            T0005: 'Wisst ihr was, vergisst es. Thomas, ich überlasse dir die ehrenvolle Aufgabe Jasons Arsch anzuschauen.',
+            T0004: `Lass dich mal anschauen, ${dataForSave.nameProtagonist}.`,
+            T0005: `Wisst ihr was, vergisst es. Thomas, ich überlasse dir die ehrenvolle Aufgabe ${dataForSave.nameProtagonist}s Arsch anzuschauen.`,
         },
         thomas: {
             T0000: 'Dasselbe gilt für mich. Wie wäre es, wenn wir uns in einer Stunde im Skatepark treffen würden?',
             T0001: 'Kein Grund gleich gemein zu werden. Hast du etwa bessere Ideen?',
             T0002: 'Verstehe.',
-            T0003: 'Hi, Jason.',
+            T0003: `Hi, ${dataForSave.nameProtagonist}.`,
             T0004: 'Richtig.',
             T0005: 'Rich- Hey, moment Mal. Wer hat sich denn letztes Mal den Knöchel verstaucht?',
             T0006: 'Wie war das noch gleich? Ich werde heute auf die Fresse fliegen?',
@@ -265,7 +265,6 @@ namespace Template {
       await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0002);
 
-      await ƒS.Speech.tell(characters.jason, text.jason.T0019);
 
       await ƒS.Character.hide(characters.jason);
       await ƒS.Character.show(
@@ -274,18 +273,69 @@ namespace Template {
         ƒS.positionPercent(25, 100)
       );
       await ƒS.update();
+      await ƒS.Speech.tell(characters.jason, text.jason.T0019);
+
       await ƒS.Speech.tell(characters.jason, text.jason.T0020);
+
+      await ƒS.Character.hide(characters.thomas);
+      await ƒS.Character.show(
+        characters.thomas,  
+        characters.thomas.pose.neutral,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.thomas, text.thomas.T0004);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.neutral,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0021);
+
+      await ƒS.Character.hide(characters.thomas);
+      await ƒS.Character.show(
+        characters.thomas,  
+        characters.thomas.pose.questioning,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.thomas, text.thomas.T0004);
+
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.disappointed,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0022);
-      await ƒS.Speech.tell(characters.thomas, text.thomas.T0004);
-      await ƒS.Speech.tell(characters.jason, text.jason.T0023);
 
       await ƒS.Character.hide(characters.thomas);
       await ƒS.Character.show(
         characters.thomas,  
         characters.thomas.pose.thinking,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
+      await ƒS.Speech.tell(characters.thomas, text.thomas.T0004);
+
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.thinking,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
+      await ƒS.Speech.tell(characters.jason, text.jason.T0023);
+
+      await ƒS.Character.hide(characters.thomas);
+      await ƒS.Character.show(
+        characters.thomas,  
+        characters.thomas.pose.neutral,
         ƒS.positionPercent(50, 100)
       );
       await ƒS.update();
@@ -309,13 +359,26 @@ namespace Template {
       await ƒS.update();
       await ƒS.Speech.tell(characters.alice, text.alice.T0003);
 
-      await ƒS.Speech.tell('Thomas und Jason', text.thomasAndJason.T0000);
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.hide(characters.thomas);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.disappointed,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.Character.show(
+        characters.thomas,  
+        characters.thomas.pose.questioning,
+        ƒS.positionPercent(50, 100)
+      );
+      await ƒS.update();
+      await ƒS.Speech.tell(`Thomas und ${dataForSave.nameProtagonist}`, text.thomasAndJason.T0000);
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0005);
 
       await ƒS.Character.hide(characters.thomas);
       await ƒS.Character.show(
         characters.thomas,  
-        characters.thomas.pose.questioning,
+        characters.thomas.pose.neutral2,
         ƒS.positionPercent(50, 100)
       );
       await ƒS.update();
@@ -334,7 +397,7 @@ namespace Template {
       await ƒS.Character.hide(characters.jason);
       await ƒS.Character.show(
         characters.jason,  
-        characters.jason.pose.disappointed,
+        characters.jason.pose.neutral2,
         ƒS.positionPercent(25, 100)
       );
       await ƒS.update();
@@ -358,6 +421,13 @@ namespace Template {
       await ƒS.update();
       await ƒS.Speech.tell(characters.thomas, text.thomas.T0007);
 
+      await ƒS.Character.hide(characters.jason);
+      await ƒS.Character.show(
+        characters.jason,  
+        characters.jason.pose.thinking,
+        ƒS.positionPercent(25, 100)
+      );
+      await ƒS.update();
       await ƒS.Speech.tell(characters.jason, text.jason.T0027);
 
       await ƒS.Character.hide(characters.alice);
@@ -410,7 +480,7 @@ namespace Template {
         ƒS.positionPercent(50, 100)
       );
       await ƒS.update();
-      await ƒS.Speech.tell('Thomas und Jason', text.thomasAndJason.T0001);
+      await ƒS.Speech.tell(`Thomas und ${dataForSave.nameProtagonist}`, text.thomasAndJason.T0001);
 
       await ƒS.Character.hide(characters.thomas);
       await ƒS.Character.hide(characters.alice);

@@ -144,11 +144,20 @@ namespace Template {
     };
   }
 
+  export function fromOutOfCanvasToMid(): ƒS.AnimationDefinition {
+    return {
+      start: { translation: ƒS.positionPercent(150, 100) },
+      end: { translation: ƒS.positionPercent(50, 100) },
+      duration: 1,
+      playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE,
+    };
+  }
+
   //define data that will be saved
   export let dataForSave = {
-    nameProtagonist: 'TEST123',
+    nameProtagonist: 'Jason',
     reprehensibility: 0,
-    firstSpellSpoken: false,
+    firstSpellSpoken: true,
     secondSpellSpoken: false,
     thirdSpellSpoken: false,
   };
@@ -157,7 +166,10 @@ namespace Template {
   //add custom class
   export function showCredits(): void {
     ƒS.Text.addClass("credits");
-    ƒS.Text.print("Hier könnten jetzt Credits stehen.");
+    ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
+    Kevin MacLeod (incompetech.com)
+    Licensed under Creative Commons: By Attribution 3.0
+    http://creativecommons.org/licenses/by/3.0/`);
 
     // showCredits();
   }
@@ -228,10 +240,10 @@ namespace Template {
     gameMenu = ƒS.Menu.create(inGameMenu, buttonFunctionalities, 'gameMenu');
     buttonFunctionalities("Close");
     let scenes: ƒS.Scenes = [
-      { id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
-      { id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
-      { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
+      //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
+      //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
+      //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+      //{ id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
       { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
       { id: '005', scene: Together, name: 'Zweisamkeit', next: '006' },
       { id: '006', scene: PrematureEnding, name: 'Vorzeitiges Ende', next: '007'},

@@ -5,13 +5,13 @@ namespace Template {
       let text = {
         
         narrator: {
-            T0000: 'Ohne zu Wissen, wie er seine magische Begabung benutzt, wandert Jason planlos durch sein Leben. Er studiert fertig, fängt mit dem Arbeiten an, heiratet, gründet eine Familie und stirbt eines Tages einen natürlichen Tod.',
-            T0001: 'Jason wacht aus seinem Traum auf.',
-            T0002: 'Jason macht sich auf den Weg zur Uni. Dort angekommen, trifft er auf seine Freunde.',
+            T0000: `Ohne zu Wissen, wie er seine magische Begabung benutzt, wandert ${dataForSave.nameProtagonist} planlos durch sein Leben. Er studiert fertig, fängt mit dem Arbeiten an, heiratet, gründet eine Familie und stirbt eines Tages einen natürlichen Tod.`,
+            T0001: `${dataForSave.nameProtagonist} wacht aus seinem Traum auf.`,
+            T0002: `${dataForSave.nameProtagonist} macht sich auf den Weg zur Uni. Dort angekommen, trifft er auf seine Freunde.`,
             T0003: 'Die Glocke der Universität fängt an zu läuten.',
-            T0004: 'Jason und die anderen begeben sich in den entsprechenden Raum, um dort ihren Test zu schreiben. Jason ist der letzte, der fertig ist. Die Dozentin kommt auf ihn zu, um den Test einzusammeln.',
-            T0005: 'Jason verbringt den Rest des Tages damit zu lernen.',
-            T0006: 'Jason verbringt den Rest des Tages damit Videospiele zu spielen.',
+            T0004: `${dataForSave.nameProtagonist} und die anderen begeben sich in den entsprechenden Raum, um dort ihren Test zu schreiben. ${dataForSave.nameProtagonist} ist der letzte, der fertig ist. Die Dozentin kommt auf ihn zu, um den Test einzusammeln.`,
+            T0005: `${dataForSave.nameProtagonist} verbringt den Rest des Tages damit zu lernen.`,
+            T0006: `${dataForSave.nameProtagonist} verbringt den Rest des Tages damit Videospiele zu spielen.`,
         },
         jason: {
           T0000: '*Aufsteh Geräusche*',
@@ -37,7 +37,7 @@ namespace Template {
           T0020: '*Ich bin der letzte der mit dem Test fertig wurde. Das heißt alle anderen sind schon weg. Zeit nachhause zu gehen.*',
           T0021: 'Äh, ja, entschuldigen Sie.',
           T0022: '*Scheiß, scheiße, scheiße, habe ich das gerade wirklich getan? Habe ich gerade wirklich meine Dozentin manipuliert, nur, damit ich eine gute Note bekomme?*',
-          T0023: '*Ganz ruhig bleiben Jason. Vielleicht hättest du auch so die beste Note bekommen.*',
+          T0023: `*Ganz ruhig bleiben ${dataForSave.nameProtagonist}. Vielleicht hättest du auch so die beste Note bekommen.*`,
           T0024: '*Nein, definitiv nicht. Die ganze vierte Aufgabe habe ich tierisch vergeigt.*',
           T0025: '*Verdammt. Naja, was getan ist, ist getan. Mir den Kopf darüber zu zerbrechen hilft mir jetzt auch nicht*',
           T0026: '*Ich bin der letzte der mit dem Test fertig wurde. Das heißt alle anderen sind schon weg. Zeit nachhause zu gehen.*',
@@ -47,16 +47,16 @@ namespace Template {
           T0030: 'Wieso lernen, wenn ich mich durch meine Probleme zaubern kann?',
         },
         alice: {
-          T0000: 'Hey Jason.',
+          T0000: `Hey ${dataForSave.nameProtagonist}.`,
           T0001: 'Thomas..',
-          T0002: 'Jason!',
+          T0002: `${dataForSave.nameProtagonist}!`,
           T0003: 'Meint er uns, Thomas?',
           T0004: 'Ja, gerade fertig geworden.',
         },
         thomas: {
           T0000: 'Hey hey.',
           T0001: 'Nenn mir bitte einen Grund, einen einzigen Grund, warum mich dein Arsch jemals interessieren sollte.',
-          T0002: 'Ich gebe mein bestes.',
+          T0002: 'Ich gebe mein Bestes.',
           T0003: 'Na, wie geht es deinem Wunderarsch?',
           T0004: 'Wieso lernen, wenn man auch nicht lernen kann?',
           T0005: 'Er meint uns, Alice.',

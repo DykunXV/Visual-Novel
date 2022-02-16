@@ -113,6 +113,7 @@ declare namespace Template {
     };
     function fromMidToRight(): ƒS.AnimationDefinition;
     function fromMidToLeft(): ƒS.AnimationDefinition;
+    function fromOutOfCanvasToMid(): ƒS.AnimationDefinition;
     let dataForSave: {
         nameProtagonist: string;
         reprehensibility: number;
