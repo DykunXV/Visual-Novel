@@ -48,10 +48,6 @@ namespace Template {
   
       //In welcher Zeit wie viele Buchstaben angezeigt werden
       ƒS.Speech.setTickerDelays(20, 2); 
-  
-      //Delay
-      let signalDelay: ƒS.Signal = ƒS.Progress.defineSignal([() => ƒS.Progress.delay(2)])
-
 
       await ƒS.Location.show(locations.bedroom);
 

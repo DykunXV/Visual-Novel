@@ -126,7 +126,10 @@ namespace Template {
   //define data that will be saved
   export let dataForSave = {
     nameProtagonist: '',
-    points: 0,
+    reprehensibility: 0,
+    firstSpellSpoken: false,
+    secondSpellSpoken: false,
+    thirdSpellSpoken: false,
   };
 
 
@@ -183,6 +186,7 @@ namespace Template {
         await ƒS.Progress.load();
         break;
       case ƒ.KEYBOARD_CODE.F10:
+        console.log(dataForSave.reprehensibility)
         if (menu) {
           console.log('Closing Menu');
           gameMenu.close();
@@ -207,7 +211,11 @@ namespace Template {
     let scenes: ƒS.Scenes = [
       { id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
       { id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '000' },
+      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+      { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
+      { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
+      { id: '005', scene: Together, name: 'Zweisamkeit', next: '006' },
+      { id: '006', scene: PrematureEnding, name: 'Vorzeitiges Ende'},
     ];
 
     let uiElement: HTMLElement = document.querySelector('[type=interface]');

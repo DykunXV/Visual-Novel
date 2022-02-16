@@ -94,7 +94,10 @@ declare namespace Template {
     function fromRightToLeft(): ƒS.AnimationDefinition;
     let dataForSave: {
         nameProtagonist: string;
-        points: number;
+        reprehensibility: number;
+        firstSpellSpoken: boolean;
+        secondSpellSpoken: boolean;
+        thirdSpellSpoken: boolean;
     };
     function showCredits(): void;
 }
@@ -106,6 +109,18 @@ declare namespace Template {
 }
 declare namespace Template {
     function MeetingYourFriends(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function AWish(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function ANewAwakening(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function Together(): ƒS.SceneReturn;
+}
+declare namespace Template {
+    function PrematureEnding(): ƒS.SceneReturn;
 }
 declare namespace Template {
     function Introduction(): ƒS.SceneReturn;
