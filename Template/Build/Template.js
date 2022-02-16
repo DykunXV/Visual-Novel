@@ -32,7 +32,7 @@ var Template;
         dreamTheme: './Audio/BGM/incompetech/Impact Prelude.mp3',
         bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
         busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
-        skateparkTheme: './Audio/BGM/incompetech/Vivacity.mp3',
+        skateparkTheme: './Audio/BGM/incompetech/Pleasant Porridge.mp3',
         schoolTheme: './Audio/BGM/incompetech/Sincerely.mp3',
         bowlingTheme: './Audio/BGM/incompetech/Smooth Lovin.mp3',
     };
@@ -158,7 +158,7 @@ var Template;
     //add custom classes
     function showCredits() {
         Template.ƒS.Text.addClass("info");
-        Template.ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
+        Template.ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Pleasant Porridge", "Sincerely", "Smooth Lovin", "Vivacity"
     Kevin MacLeod (incompetech.com)
     Licensed under Creative Commons: By Attribution 3.0
     http://creativecommons.org/licenses/by/3.0/`);
@@ -905,6 +905,7 @@ var Template;
                 break;
             case secondDialogueElementOptions.iChooseWish:
                 Template.dataForSave.secondSpellSpoken = true;
+                Template.addReprehensibility(5);
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0026);
                 break;
         }
@@ -943,7 +944,7 @@ var Template;
         await Template.ƒS.Character.hide(Template.characters.jason);
         await Template.ƒS.Location.show(Template.locations.bedroomNight);
         await Template.ƒS.update(Template.transition.circlewipeClockwise.duration, Template.transition.circlewipeClockwise.alpha, Template.transition.circlewipeClockwise.edge);
-        Template.ƒS.Sound.fade(Template.audio.busStopTheme, 0, 1, true);
+        Template.ƒS.Sound.fade(Template.audio.skateparkTheme, 0, 1, true);
         Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);
         await Template.ƒS.Speech.tell(Template.characters.narrator, text.narrator.T0006);
     }

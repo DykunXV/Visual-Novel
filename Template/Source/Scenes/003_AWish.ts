@@ -408,6 +408,7 @@ namespace Template {
           break;
         case secondDialogueElementOptions.iChooseWish:
           dataForSave.secondSpellSpoken = true;
+          addReprehensibility(5);
           await ƒS.Speech.tell(characters.jason, text.jason.T0026);
           break;
       }
@@ -489,7 +490,7 @@ namespace Template {
       await ƒS.update(transition.circlewipeClockwise.duration,
         transition.circlewipeClockwise.alpha,
         transition.circlewipeClockwise.edge);
-      ƒS.Sound.fade(audio.busStopTheme, 0, 1, true);
+      ƒS.Sound.fade(audio.skateparkTheme, 0, 1, true);
       ƒS.Sound.play(audio.bedroomTheme, 1, true);
       await ƒS.Speech.tell(characters.narrator, text.narrator.T0006);
     }

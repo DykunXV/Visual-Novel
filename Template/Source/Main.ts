@@ -34,7 +34,7 @@ namespace Template {
     dreamTheme: './Audio/BGM/incompetech/Impact Prelude.mp3',
     bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
     busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
-    skateparkTheme: './Audio/BGM/incompetech/Vivacity.mp3',
+    skateparkTheme: './Audio/BGM/incompetech/Pleasant Porridge.mp3',
     schoolTheme: './Audio/BGM/incompetech/Sincerely.mp3',
     bowlingTheme: './Audio/BGM/incompetech/Smooth Lovin.mp3',
   };
@@ -166,7 +166,7 @@ namespace Template {
   //add custom classes
   export function showCredits(): void {
     ƒS.Text.addClass("info");
-    ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Sincerely", "Smooth Lovin", "Vivacity"
+    ƒS.Text.print(`"Impact Prelude", "Late Night Radio", "Pleasant Porridge", "Sincerely", "Smooth Lovin", "Vivacity"
     Kevin MacLeod (incompetech.com)
     Licensed under Creative Commons: By Attribution 3.0
     http://creativecommons.org/licenses/by/3.0/`);
