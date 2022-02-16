@@ -203,12 +203,10 @@ var Template;
                 break;
             case inGameMenu.increaseVolume:
                 Template.dataForSave.masterVolume += 0.05;
-                console.log(Template.dataForSave.masterVolume);
                 Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
                 break;
             case inGameMenu.decreaseVolume:
                 Template.dataForSave.masterVolume -= 0.05;
-                console.log(Template.dataForSave.masterVolume);
                 Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
                 break;
             case inGameMenu.close:

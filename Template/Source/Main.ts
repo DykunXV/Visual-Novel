@@ -213,12 +213,10 @@ namespace Template {
         break;
       case inGameMenu.increaseVolume:
         dataForSave.masterVolume += 0.05;
-        console.log(dataForSave.masterVolume);
         ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
         break;
       case inGameMenu.decreaseVolume:
         dataForSave.masterVolume -= 0.05;
-        console.log(dataForSave.masterVolume);
         ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
         break;  
       case inGameMenu.close:
