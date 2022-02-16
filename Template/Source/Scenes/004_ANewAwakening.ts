@@ -82,7 +82,7 @@ namespace Template {
       };
   
       //Musik
-      ƒS.Sound.fade(audio.bedroomTheme, 0.02, 2, true)
+      ƒS.Sound.fade(audio.bedroomTheme, 1, 2, true)
   
       //In welcher Zeit wie viele Buchstaben angezeigt werden
       ƒS.Speech.setTickerDelays(20, 2); 
