@@ -91,7 +91,6 @@ namespace Template {
       await ƒS.Speech.tell(characters.jason, text.jason.T0011);
 
       
-
       let firstDialogueElementOptions = {
         iChooseFriends: 'Mit Freunden treffen.',
         iChooseSleep: 'Weiter schlafen.',
