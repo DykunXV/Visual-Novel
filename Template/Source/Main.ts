@@ -157,8 +157,8 @@ namespace Template {
   export let dataForSave = {
     nameProtagonist: 'Jason',
     reprehensibility: 0,
-    firstSpellSpoken: true,
-    secondSpellSpoken: true,
+    firstSpellSpoken: false,
+    secondSpellSpoken: false,
     thirdSpellSpoken: false,
   };
 
