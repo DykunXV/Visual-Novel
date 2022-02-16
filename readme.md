@@ -13,7 +13,7 @@ https://github.com/DykunXV/Visual-Novel/blob/main/Konzeption.pdf
 |    | Titel                 | A Certain Wish
 |    | Name                  | Dennis Fischer
 |    | Matrikelnummer        | 260531
-|  1 | Konzeption     | In der Konzeption findet sich eine Inhaltsangabe, alle Charaktere, alle Szenen und ein Flowchart Diagram.                                                                                                                            |
+|  1 | Konzeption     | In der Konzeption findet sich eine Inhaltsangabe, alle Charaktere, ein Drehbuch für alle Szenen und ein Flowchart Diagram.                                                                                                                            |
 |  2 | Charakter-Konzept     | Archetypen kommen vor. Diese sind in der Konzeption bei den Charakteren genannt.                                                                                                                                                                                |
 |  3 | Auswahlmöglichkeiten | Der Spieler hat viele verschiedene Möglichkeiten die Story zu verändern und ihn erwartet beim Spielen quasi jedes mal ein anderer Weg zum Ende.                                                                                                                                                     |
 |  4 | Branching narratives      | Die Variablen, die ich benutze, um zu entscheiden welcher Variante einer Szene der Spieler sieht, sind firstSpellSpoken: boolean, secondSpellSpoken: boolean; thirdSpellSpoken: boolean und reprehensibility: number.                                                                                                                                                          |
