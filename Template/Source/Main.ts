@@ -34,23 +34,15 @@ namespace Template {
     dreamTheme: './Audio/BGM/incompetech/Impact Prelude.mp3',
     bedroomTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
     busStopTheme: './Audio/BGM/incompetech/Vivacity.mp3',
-    skateparkTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
-    schoolTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
-    bowlingTheme: './Audio/BGM/incompetech/Late Night Radio.mp3',
+    skateparkTheme: './Audio/BGM/incompetech/Vivacity.mp3',
+    schoolTheme: './Audio/BGM/incompetech/????',
+    bowlingTheme: './Audio/BGM/incompetech/Smooth Lovin.mp3',
   };
 
   //define items
-  export let items = {
-    Crowbar: {
-      name: 'Crowbar',
-      description: 'Krasses Teil',
-      image: './Images/Items/crowbar.jpg',
-    },
-    Blowbar: {
-      name: 'Blowbar',
-      description: 'Krasseres Teil',
-      image: './Images/Items/blowbar.jpg',
-    },
+  export let soundEffects = {
+    flashback: './Audio/Soundeffects/Flashback.m4a',
+    phoneVibration: './Audio/Soundeffects/Phone Vibration.wav',
   };
 
   //define backgrounds
@@ -68,8 +60,16 @@ namespace Template {
       background: './Images/Backgrounds/bedroomNight.jpg',
     },
     busStop: {
-      name: 'Bus stop',
+      name: 'Bus Stop',
       background: './Images/Backgrounds/busStop.jpg',
+    },
+    skatepark: {
+      name: 'Skatepark',
+      background: './Images/Backgrounds/skatepark.jpg',
+    },
+    bowlingAlley: {
+      name: 'Bowling Alley',
+      background: './Images/Backgrounds/bowlingAlley.jpg',
     },
   };
 
@@ -243,7 +243,7 @@ namespace Template {
     let scenes: ƒS.Scenes = [
       //{ id: '000', scene: ADream, name: 'Ein Traum', next: '001' },
       //{ id: '001', scene: MyIntroduction, name: 'Einführung', next: '002' },
-      { id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
+      //{ id: '002', scene: MeetingYourFriends, name: 'Treffen mit Freunden', next: '003' },
       { id: '003', scene: AWish, name: 'Ein Wunsch', next: '004' },
       { id: '004', scene: ANewAwakening, name: 'Ein erneutes Erwachen', next: '005' },
       { id: '005', scene: Together, name: 'Zweisamkeit', next: '006' },

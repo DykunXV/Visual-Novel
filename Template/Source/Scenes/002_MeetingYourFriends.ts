@@ -101,7 +101,6 @@ namespace Template {
       ƒS.positionPercent(25, 100)
     );
     await ƒS.update();
-
     await ƒS.Speech.tell(characters.jason, text.jason.T0002);
 
     await ƒS.Character.hide(characters.alice);

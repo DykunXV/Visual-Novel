@@ -31,17 +31,9 @@ declare namespace Template {
         schoolTheme: string;
         bowlingTheme: string;
     };
-    let items: {
-        Crowbar: {
-            name: string;
-            description: string;
-            image: string;
-        };
-        Blowbar: {
-            name: string;
-            description: string;
-            image: string;
-        };
+    let soundEffects: {
+        flashback: string;
+        phoneVibration: string;
     };
     let locations: {
         dream: {
@@ -57,6 +49,14 @@ declare namespace Template {
             background: string;
         };
         busStop: {
+            name: string;
+            background: string;
+        };
+        skatepark: {
+            name: string;
+            background: string;
+        };
+        bowlingAlley: {
             name: string;
             background: string;
         };
