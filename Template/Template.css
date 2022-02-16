@@ -159,7 +159,7 @@ dialog {
 }
 
 speech {
-  position: absolute;
+  position: fixed;
   width: 50vw;
   height: 10vh;
   bottom: 0px;
