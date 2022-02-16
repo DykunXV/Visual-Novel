@@ -1,18 +1,18 @@
-# FUDGE_Story
-A FUDGE module for the easy development of interactive stories, visual novels and simple adventure games
+# Github-Pages Link
+https://dykunxv.github.io/Visual-Novel/Template/Template.html
 
-
-# Reference
-- [APIs](https://jirkadelloro.github.io/FUDGE_Story/Documentation/Reference/#fudge-story-reference)
-
+# Quellcode
+https://github.com/DykunXV/Visual-Novel/tree/main/Template/Source
+# Konzept-Dokument
+https://github.com/DykunXV/Visual-Novel/blob/main/Konzeption.pdf
 ## Bewertungskriterien
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
 
 | Nr | Bezeichnung           | Inhalt                                                                                                                                                                                                                                                                         |
 |---:|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|    | Titel                 |
-|    | Name                  |
-|    | Matrikelnummer        |
+|    | Titel                 | A Certain Wish
+|    | Name                  | Dennis Fischer
+|    | Matrikelnummer        | 260531
 |  1 | Konzeption     | In der Konzeption findet sich eine Inhaltsangabe, alle Charaktere, alle Szenen und ein Flowchart Diagram.                                                                                                                            |
 |  2 | Charakter-Konzept     | Archetypen kommen vor. Diese sind in der Konzeption bei den Charakteren genannt.                                                                                                                                                                                |
 |  3 | Auswahlmöglichkeiten | Der Spieler hat viele verschiedene Möglichkeiten die Story zu verändern und ihn erwartet beim Spielen quasi jedes mal ein anderer Weg zum Ende.                                                                                                                                                     |
