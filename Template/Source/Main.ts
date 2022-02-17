@@ -212,11 +212,11 @@ namespace Template {
         await ƒS.Progress.load();
         break;
       case inGameMenu.increaseVolume:
-        dataForSave.masterVolume += 0.05;
+        dataForSave.masterVolume += 0.1;
         ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
         break;
       case inGameMenu.decreaseVolume:
-        dataForSave.masterVolume -= 0.05;
+        dataForSave.masterVolume -= 0.1;
         ƒS.Sound.setMasterVolume(dataForSave.masterVolume);
         break;  
       case inGameMenu.close:
