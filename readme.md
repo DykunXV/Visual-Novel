@@ -1,6 +1,8 @@
-# Steuerungshinweis
+# Besondere Steuerung
 F8 = Speichern des Spielstands
+
 F9 = Laden eines Spielstands
+
 F10 = Menü öffnen
 
 # Github-Pages Link
