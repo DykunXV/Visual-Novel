@@ -29,7 +29,7 @@ namespace Template {
             T0022: 'Ich glaube meine Freunde wollten heute zusammen was unternehmen. Vielleicht kann ich da noch mitmischen.',
         },
         jasonsThoughts: {
-            T0000: 'Ist das dein Ernst? Ich erwecke in dir Kraft die Magie in dir zu benutzen und du gehst wieder schlafen?',
+            T0000: 'Ist das dein Ernst? Ich erwecke in dir Kraft der Magie zu benutzen und du gehst wieder schlafen?',
             T0001: 'DU HAST NICHT MAL ANSATZWEISE PROBIERT ETWAS ZU MACHEN.',
             T0002: 'Wer auch nur ansatzweise etwas von Magie weiß, der weiß auch, dass zu jedem Zauber ein Spruch gehört, der aufgesagt werden muss.',
             T0003: 'Ich bin Teil deines Traums! Deine Gedanken! Ich bin quasi du!',
@@ -144,15 +144,38 @@ namespace Template {
           await ƒS.update();
           await ƒS.Speech.tell(characters.jason, text.jason.T0015);
 
+          await ƒS.Character.hide(characters.jasonsThoughts);
+          await ƒS.Character.show(
+            characters.jasonsThoughts,  
+            characters.jasonsThoughts.pose.neutral2,
+            ƒS.positionPercent(75, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0001);
+
+          await ƒS.Character.hide(characters.jason);
+          await ƒS.Character.show(
+            characters.jason,  
+            characters.jason.pose.thinking,
+            ƒS.positionPercent(25, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell(characters.jason, text.jason.T0016);
+
+          await ƒS.Character.hide(characters.jasonsThoughts);
+          await ƒS.Character.show(
+            characters.jasonsThoughts,  
+            characters.jasonsThoughts.pose.neutral,
+            ƒS.positionPercent(75, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0002);
           await ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0003);
 
           await ƒS.Character.hide(characters.jason);
           await ƒS.Character.show(
             characters.jason,  
-            characters.jason.pose.thinking,
+            characters.jason.pose.neutral,
             ƒS.positionPercent(25, 100)
           );
           await ƒS.update();
@@ -167,8 +190,32 @@ namespace Template {
           await ƒS.update();
 
           await ƒS.Speech.tell(characters.jason, text.jason.T0018);
+
+          await ƒS.Character.hide(characters.jasonsThoughts);
+          await ƒS.Character.show(
+            characters.jasonsThoughts,  
+            characters.jasonsThoughts.pose.thinking,
+            ƒS.positionPercent(75, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell(characters.jasonsThoughts, text.jasonsThoughts.T0004);
+
+          await ƒS.Character.hide(characters.jason);
+          await ƒS.Character.show(
+            characters.jason,  
+            characters.jason.pose.thinking,
+            ƒS.positionPercent(25, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell(characters.jason, text.jason.T0019);
+
+          await ƒS.Character.hide(characters.jasonsThoughts);
+          await ƒS.Character.show(
+            characters.jasonsThoughts,  
+            characters.jasonsThoughts.pose.disappointed,
+            ƒS.positionPercent(75, 100)
+          );
+          await ƒS.update();
           await ƒS.Speech.tell(characters.jasonsThoughts, text.jasonsThoughts.T0005);
 
           ƒS.Sound.fade(audio.dreamTheme, 0, 1, true);

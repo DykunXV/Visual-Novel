@@ -190,6 +190,26 @@ namespace Template {
     ƒS.Text.print(info);
   }
 
+  export function showControls(): void {
+    ƒS.Text.addClass("info");
+    ƒS.Text.print("<h1>Besondere Steuerung</h1>\
+    <table>\
+      <tr>\
+        <td>Spielstand Speichern</td>\
+        <td>F8</td>\
+      </tr>\
+      <tr>\
+        <td>Spielstand Laden</td>\
+        <td>F9</td>\
+      </tr>\
+      <tr>\
+        <td>Menü öffnen</td>\
+        <td>F10</td>\
+      </tr>\
+    </table>\
+    ");
+  }
+
   //define in game Menu
   let inGameMenu = {
     save: 'Save',

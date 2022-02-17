@@ -18,7 +18,7 @@ namespace Template {
         }
       };
   
-
+      showControls();
       ƒS.Sound.play(audio.dreamTheme, 1, true);
   
       //In welcher Zeit wie viele Buchstaben angezeigt werden

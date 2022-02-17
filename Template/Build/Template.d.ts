@@ -126,6 +126,7 @@ declare namespace Template {
     function addReprehensibility(reprehensibility: number): void;
     function removeReprehensibility(reprehensibility: number): void;
     function showInfo(info: string): void;
+    function showControls(): void;
 }
 declare namespace Template {
     function ADream(): ƒS.SceneReturn;

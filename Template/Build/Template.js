@@ -182,6 +182,26 @@ var Template;
         Template.ƒS.Text.print(info);
     }
     Template.showInfo = showInfo;
+    function showControls() {
+        Template.ƒS.Text.addClass("info");
+        Template.ƒS.Text.print("<h1>Besondere Steuerung</h1>\
+    <table>\
+      <tr>\
+        <td>Spielstand Speichern</td>\
+        <td>F8</td>\
+      </tr>\
+      <tr>\
+        <td>Spielstand Laden</td>\
+        <td>F9</td>\
+      </tr>\
+      <tr>\
+        <td>Menü öffnen</td>\
+        <td>F10</td>\
+      </tr>\
+    </table>\
+    ");
+    }
+    Template.showControls = showControls;
     //define in game Menu
     let inGameMenu = {
         save: 'Save',
@@ -202,11 +222,11 @@ var Template;
                 await Template.ƒS.Progress.load();
                 break;
             case inGameMenu.increaseVolume:
-                Template.dataForSave.masterVolume += 0.05;
+                Template.dataForSave.masterVolume += 0.1;
                 Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
                 break;
             case inGameMenu.decreaseVolume:
-                Template.dataForSave.masterVolume -= 0.05;
+                Template.dataForSave.masterVolume -= 0.1;
                 Template.ƒS.Sound.setMasterVolume(Template.dataForSave.masterVolume);
                 break;
             case inGameMenu.close:
@@ -288,6 +308,7 @@ var Template;
                 T0010: 'Nun schreite voran und wache aus diesem Traum auf. Entdecke deine wahren Kräfte.',
             }
         };
+        Template.showControls();
         Template.ƒS.Sound.play(Template.audio.dreamTheme, 1, true);
         //In welcher Zeit wie viele Buchstaben angezeigt werden
         Template.ƒS.Speech.setTickerDelays(20, 2);
@@ -346,7 +367,7 @@ var Template;
                 T0022: 'Ich glaube meine Freunde wollten heute zusammen was unternehmen. Vielleicht kann ich da noch mitmischen.',
             },
             jasonsThoughts: {
-                T0000: 'Ist das dein Ernst? Ich erwecke in dir Kraft die Magie in dir zu benutzen und du gehst wieder schlafen?',
+                T0000: 'Ist das dein Ernst? Ich erwecke in dir Kraft der Magie zu benutzen und du gehst wieder schlafen?',
                 T0001: 'DU HAST NICHT MAL ANSATZWEISE PROBIERT ETWAS ZU MACHEN.',
                 T0002: 'Wer auch nur ansatzweise etwas von Magie weiß, der weiß auch, dass zu jedem Zauber ein Spruch gehört, der aufgesagt werden muss.',
                 T0003: 'Ich bin Teil deines Traums! Deine Gedanken! Ich bin quasi du!',
@@ -411,20 +432,38 @@ var Template;
                 await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0015);
+                await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.neutral2, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0001);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0016);
+                await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.neutral, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0002);
                 await Template.ƒS.Speech.tell('Unbekannt', text.jasonsThoughts.T0003);
                 await Template.ƒS.Character.hide(Template.characters.jason);
-                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral, Template.ƒS.positionPercent(25, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0017);
                 await Template.ƒS.Character.hide(Template.characters.jason);
                 await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.neutral2, Template.ƒS.positionPercent(25, 100));
                 await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0018);
+                await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.thinking, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jasonsThoughts, text.jasonsThoughts.T0004);
+                await Template.ƒS.Character.hide(Template.characters.jason);
+                await Template.ƒS.Character.show(Template.characters.jason, Template.characters.jason.pose.thinking, Template.ƒS.positionPercent(25, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jason, text.jason.T0019);
+                await Template.ƒS.Character.hide(Template.characters.jasonsThoughts);
+                await Template.ƒS.Character.show(Template.characters.jasonsThoughts, Template.characters.jasonsThoughts.pose.disappointed, Template.ƒS.positionPercent(75, 100));
+                await Template.ƒS.update();
                 await Template.ƒS.Speech.tell(Template.characters.jasonsThoughts, text.jasonsThoughts.T0005);
                 Template.ƒS.Sound.fade(Template.audio.dreamTheme, 0, 1, true);
                 Template.ƒS.Sound.play(Template.audio.bedroomTheme, 1, true);

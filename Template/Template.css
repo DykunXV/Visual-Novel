@@ -242,6 +242,16 @@ content input:focus {
   color: white;
   border-radius: 50px;
   border-color: red;
+  max-width: 80vw;
+}
+
+.info h1{
+  margin-top: 0px;
+  text-align: center;
+}
+
+table {
+  border-spacing: 100px 5px;
 }
 
 /* Animations */
